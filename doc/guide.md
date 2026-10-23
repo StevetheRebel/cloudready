@@ -66,7 +66,7 @@ Onboarding is implemented for the local demo. New demo entry goes through setup,
 - [x] Connect saved practice-session continuation to the shared runner.
 - [x] Use actual learner records rather than fabricated progress.
 
-The initial dashboard UI is implemented. Topic metrics, revision priorities, weekly activity, and countdowns derive from saved records. Diagnostic start/resume is connected. Practice and full revision actions remain pending. See `doc/dashboard.md`.
+The dashboard UI is implemented. Topic metrics, revision priorities, weekly activity, and countdowns derive from saved records. Diagnostic start/resume, practice, progress, and the revision queue are connected. See `doc/dashboard.md`.
 
 ### 6. Diagnostic setup — `/assessment/start`
 
@@ -104,7 +104,7 @@ The detailed diagnostic results page is implemented, including missing/incomplet
 - [x] Provide searchable, filterable concept cards.
 - [x] Handle missing lessons and distinguish reviewed status from mastery.
 
-Stage 9 provides twelve source-checked introductory lessons and the filtered library. Recap checks are labelled as repeated diagnostic material and do not change saved scores. See `doc/learning.md`. Practice and progress are now connected. Checklist progress is 50/65 (76.9%); see `doc/progress.md`.
+Stage 9 provides twelve source-checked introductory lessons and the filtered library. Recap checks are labelled as repeated diagnostic material and do not change saved scores. See `doc/learning.md`. Practice, progress, and revision are now connected. Checklist progress is 54/65 (83.1%); see `doc/progress.md`.
 
 ### 10. Targeted practice
 
@@ -125,14 +125,16 @@ Stage 10 is implemented with a 30-question source-checked bank, fresh-first sele
 - [x] Complete returning-learner actions, revision priorities, activity, and study plans.
 - [x] Keep flashcard recall separate from marked-question accuracy.
 
-Stage 11 is implemented for local demo records. Analytics separates diagnostics, first practice, and retries; dashboard plans use saved sessions and available lessons/practice. See `doc/analytics.md` and `doc/dashboard.md`. Browser acceptance remains unverified. Next: revision.
+Stage 11 is implemented for local demo records. Analytics separates diagnostics, first practice, and retries; dashboard plans use saved sessions and available lessons/practice. See `doc/analytics.md` and `doc/dashboard.md`. Browser acceptance remains unverified.
 
 ### 12. Revision — `/revision`
 
-- [ ] Build due-today, upcoming, and all-items views.
-- [ ] Add reveal, recall ratings, and a documented scheduling rule.
-- [ ] Persist next review dates and support removal with undo.
-- [ ] Add the up-to-date empty state.
+- [x] Build due-today, upcoming, and all-items views.
+- [x] Add reveal, recall ratings, and a documented scheduling rule.
+- [x] Persist next review dates and support removal with undo.
+- [x] Add the up-to-date empty state.
+
+Stage 12 is implemented for local demo records, including stale-action guards, failed-save recovery, missing-content handling, and removal with undo. See `doc/revision.md`. Browser acceptance remains unverified. Next: settings.
 
 ### 13. Settings — `/settings`
 

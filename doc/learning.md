@@ -14,7 +14,7 @@ Each recap check reuses the matching diagnostic question and states that clearly
 
 Mark lesson reviewed is an explicit action. It saves one lesson-review record and one activity event, preserves all submitted responses, and does not claim mastery. Repeating it is idempotent: it neither writes another event nor changes the original review timestamp. Opening a lesson alone creates no study event.
 
-Add to revision creates a manual revision item due on the learner's current date in their saved timezone. An existing item keeps its reason and schedule. Adding an item does not mark it reviewed, rate flashcard recall, or change any answer score. The full revision interface remains stage 12.
+Add to revision creates a manual revision item due on the learner's current date in their saved timezone. An existing item keeps its reason and schedule. Adding an item does not mark it reviewed, rate flashcard recall, or change any answer score. The revision interface is now available at `/revision`; see `doc/revision.md`.
 
 Both mutations re-read the latest repository, validate the concept ID, and save before reporting success. Unknown concepts and storage errors do not silently overwrite existing records. A failed save leaves the lesson open and reports the error. Browser storage remains local to the site, with the existing multi-tab concurrency limits.
 
@@ -34,4 +34,4 @@ Browser interaction and visual checks remain blocked by the earlier browser acce
 
 The prior results milestone was committed locally as `4c266d8` when this step began. The learning milestone was committed locally as `473900d` when the user proceeded. Push is separate and only performed when requested.
 
-Targeted practice is now implemented with a 30-question source-checked bank. Next: progress and dashboard completion.
+Targeted practice is now implemented with a 30-question source-checked bank. Progress and revision are connected. Next: settings.

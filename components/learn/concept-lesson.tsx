@@ -235,8 +235,14 @@ export function ConceptLesson({ conceptId }: { conceptId: string }) {
               </p>
             ) : null}
             <p className="mt-4 text-xs leading-6 text-muted-foreground">
-              Changes save to this browser. Full revision recall and scheduling
-              controls are coming later.
+              Changes save to this browser.{" "}
+              <Link
+                href="/revision"
+                className="text-primary underline underline-offset-4"
+              >
+                Open your revision queue
+              </Link>{" "}
+              to practise recall and schedule your next review.
             </p>
             {message ? (
               <p role="status" className="mt-4 text-sm leading-7 text-success">

@@ -41,4 +41,4 @@ No credentials or product decisions were needed for this milestone. It was commi
 
 ## Next
 
-Concept lessons and the learning library are now implemented and connected; see `doc/learning.md`. Targeted practice and progress analytics are connected. The revision queue is next.
+Concept lessons and the learning library are now implemented and connected; see `doc/learning.md`. Targeted practice and progress analytics are connected. The revision queue is connected. Settings is next.

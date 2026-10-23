@@ -157,7 +157,7 @@ export function Dashboard() {
                 ? "An unfinished session is saved in this browser. Your submitted answers are kept when you resume."
                 : !summary.hasDiagnostic
                   ? "Explore twelve untimed questions across the three topic groups. Choose an answer and a confidence rating, then learn from the explanation."
-                  : "Your latest answers and confidence ratings help prioritise revision. Open a concept lesson to revisit the reasoning; targeted practice is available, and the full revision queue is coming later."}
+                  : "Your latest answers and confidence ratings help prioritise revision. Revisit a lesson, practise recall in your revision queue, or start focused practice."}
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             {needsSetup ? (
@@ -407,8 +407,13 @@ export function Dashboard() {
             </div>
           )}
           <p className="mt-4 text-xs leading-6 text-muted-foreground">
-            Concept lessons are available now. The full revision queue is coming
-            later.
+            <Link
+              href="/revision"
+              className="text-primary underline underline-offset-4"
+            >
+              Open the full revision queue
+            </Link>{" "}
+            for recall ratings and scheduled reviews.
           </p>
         </Card>
         <Card>

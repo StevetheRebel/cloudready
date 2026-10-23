@@ -189,6 +189,7 @@ export const activitySchema = z.object({
 });
 export const learnerDataSchema = z.object({
   schemaVersion: z.literal(1),
+  revisionRemovalId: z.uuid().optional(),
   profile: profileSchema,
   sessions: z.array(sessionSchema),
   lessonReviews: z.array(lessonReviewSchema),
