@@ -1,0 +1,96 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --background: #faf9f6;
+  --foreground: #242530;
+  --card: #ffffff;
+  --muted: #efeee9;
+  --muted-foreground: #636470;
+  --primary: #4941c6;
+  --primary-foreground: #ffffff;
+  --accent: #eeedfc;
+  --border: #dddedf;
+  --success: #14695c;
+  --success-soft: #e6f3ed;
+  --warning: #89500b;
+  --warning-soft: #fff2d8;
+  --destructive: #b53646;
+  --destructive-soft: #fcecef;
+  --ring: #625be0;
+}
+.dark {
+  color-scheme: dark;
+  --background: #17181f;
+  --foreground: #f1f0f6;
+  --card: #20212b;
+  --muted: #2a2c38;
+  --muted-foreground: #b3b5c6;
+  --primary: #b3adff;
+  --primary-foreground: #211d53;
+  --accent: #302c4b;
+  --border: #3d3f4e;
+  --success: #8edcc7;
+  --success-soft: #1c3b35;
+  --warning: #f1c783;
+  --warning-soft: #403322;
+  --destructive: #ffacb9;
+  --destructive-soft: #452730;
+  --ring: #b3adff;
+}
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-destructive: var(--destructive);
+  --color-destructive-soft: var(--destructive-soft);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+  }
+  button:not(:disabled),
+  summary,
+  select {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--foreground);
+  }
+  html {
+    scroll-padding-top: 6rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
