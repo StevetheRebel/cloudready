@@ -45,4 +45,4 @@ All 102 project tests passed. After final integration edits, all nine settings t
 
 User validation should cover changing and saving preferences, theme choices, reload/back restoration, navigation cancellation, discard, export download, cancelled and confirmed resets, keyboard/dialog focus, and mobile layouts. Use a disposable demo or export saved records before testing confirmed resets.
 
-Next: demo recovery forms and neutral confirmation/invalid-link states at `/forgot-password` and `/reset-password`. Real email delivery remains deferred until real accounts are connected.
+Demo recovery forms and neutral confirmation/invalid-link states are now implemented at `/forgot-password` and `/reset-password`. Real email delivery remains deferred until real accounts are connected. Next: supporting public pages.

@@ -26,6 +26,13 @@ export default function Page() {
             account, verification email, or authenticated session is created.
             Please use sample details rather than personal credentials.
           </p>
+          <p className="mt-3">
+            Recovery and reset forms are also local previews. Example emails and
+            passwords are checked in page memory without account lookup, email
+            delivery, password storage, or credential changes. Reset-page
+            examples use public preview states, not real reset tokens. A real
+            reset token is not accepted by this demo.
+          </p>
         </section>
         <section>
           <h2 className="mb-3 text-lg font-semibold text-foreground">

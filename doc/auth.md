@@ -22,7 +22,7 @@ A successful sign-up clears entered form values and shows the supplied email wit
 
 A successful demo sign-in clears the password and displays an explicit preview state. Explore demo is a separate action that opens the public local learner space. Refreshing the sign-in page returns to the empty form: no authenticated session is kept.
 
-Remember me is visibly disabled with an explanation until real authentication exists. Forgot password opens an availability explanation; the full recovery routes remain stage 14 work. No social authentication buttons are shown.
+Remember me is visibly disabled with an explanation until real authentication exists. Forgot password now opens `/forgot-password`; demo recovery and reset-link states are implemented in stage 14. See `doc/recovery.md`. No social authentication buttons are shown.
 
 ## Service and validation boundaries
 

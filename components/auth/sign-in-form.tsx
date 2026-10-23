@@ -24,7 +24,6 @@ export function SignInForm() {
   const [formError, setFormError] = useState("");
   const [pending, setPending] = useState(false);
   const [complete, setComplete] = useState(false);
-  const [recoveryOpen, setRecoveryOpen] = useState(false);
   const errorRef = useRef<HTMLParagraphElement>(null);
   const successRef = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
@@ -201,15 +200,12 @@ export function SignInForm() {
               />
               Remember me
             </label>
-            <Button
-              variant="ghost"
-              className="px-0 text-xs text-primary"
-              aria-expanded={recoveryOpen}
-              aria-controls="recovery-note"
-              onClick={() => setRecoveryOpen((current) => !current)}
+            <Link
+              href="/forgot-password"
+              className="inline-flex min-h-11 items-center text-xs font-semibold text-primary underline underline-offset-4"
             >
               Forgot password?
-            </Button>
+            </Link>
           </div>
           <p
             id="remember-hint"
@@ -217,16 +213,6 @@ export function SignInForm() {
           >
             Remember me is available with real account sign-in.
           </p>
-          {recoveryOpen ? (
-            <p
-              id="recovery-note"
-              role="status"
-              className="mt-3 rounded-xl bg-muted p-3 text-xs leading-6 text-muted-foreground"
-            >
-              Password recovery will be available with real accounts. This demo
-              has no password to reset; use Fill sample details to try sign-in.
-            </p>
-          ) : null}
         </div>
         {formError ? (
           <p

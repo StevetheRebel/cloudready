@@ -104,7 +104,7 @@ The detailed diagnostic results page is implemented, including missing/incomplet
 - [x] Provide searchable, filterable concept cards.
 - [x] Handle missing lessons and distinguish reviewed status from mastery.
 
-Stage 9 provides twelve source-checked introductory lessons and the filtered library. Recap checks are labelled as repeated diagnostic material and do not change saved scores. See `doc/learning.md`. Practice, progress, revision, and settings are now connected. Checklist progress is 59/65 (90.8%); see `doc/progress.md`.
+Stage 9 provides twelve source-checked introductory lessons and the filtered library. Recap checks are labelled as repeated diagnostic material and do not change saved scores. See `doc/learning.md`. Practice, progress, revision, settings, and demo recovery are now connected. Checklist progress is 60/65 (92.3%); see `doc/progress.md`.
 
 ### 10. Targeted practice
 
@@ -144,12 +144,14 @@ Stage 12 is implemented for local demo records, including stale-action guards, f
 - [x] Confirm learning-data resets and explain demo-reset scope.
 - [x] Handle unsaved changes.
 
-Stage 13 is implemented for the demo, including validated edits, tab drafts/navigation warnings, saved-progress export, and confirmed resets with explicit scope. Theme controls save immediately. Live email/password/account deletion actions remain unavailable with explanations. See `doc/settings.md`. Next: demo account recovery forms and states; real email remains deferred.
+Stage 13 is implemented for the demo, including validated edits, tab drafts/navigation warnings, saved-progress export, and confirmed resets with explicit scope. Theme controls save immediately. Live email/password/account deletion actions remain unavailable with explanations. See `doc/settings.md`.
 
 ### 14. Account recovery — `/forgot-password`, `/reset-password`
 
-- [ ] Add recovery forms, neutral confirmations, and invalid/expired link states.
+- [x] Add recovery forms, neutral confirmations, and invalid/expired link states.
 - [ ] Connect real email delivery if these flows are live.
+
+Stage 14 demo UI is implemented, including missing/used-link examples and validated password confirmation. Public preview states do not validate real tokens or change credentials. Live accounts/email remain deferred under the selected demo scope. See `doc/recovery.md`. Next: supporting public pages and public-navigation/404 completion.
 
 ### 15. Supporting public pages
 
