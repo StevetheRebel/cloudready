@@ -24,7 +24,7 @@ import { SessionAction } from "@/components/dashboard/session-action";
 import { useLearnerData } from "@/components/learner/use-learner-data";
 import {
   dashboardSummary,
-  initialStudyPlan,
+  studyPlan,
   MIN_TOPIC_RESPONSES,
 } from "@/lib/cloudready/dashboard";
 import { topics, concepts } from "@/lib/cloudready/content";
@@ -90,7 +90,7 @@ export function Dashboard() {
     month: "long",
     timeZone: "UTC",
   }).format(new Date(`${summary.today}T12:00:00Z`));
-  const tasks = initialStudyPlan(preferences.minutesPerSession);
+  const { tasks, scheduledToday } = studyPlan(data, hasDraft);
   const suggestedMinutes = tasks.reduce(
     (total, task) => total + task.minutes,
     0,
@@ -208,6 +208,20 @@ export function Dashboard() {
                 View latest diagnostic results
               </Link>
             ) : null}
+            {summary.latestCompletedPractice ? (
+              <Link
+                href={`/practice/${encodeURIComponent(summary.latestCompletedPractice.id)}/results`}
+                className={buttonVariants({ variant: "secondary" })}
+              >
+                View latest practice results
+              </Link>
+            ) : null}
+            <Link
+              href="/progress"
+              className={buttonVariants({ variant: "secondary" })}
+            >
+              View progress
+            </Link>
           </div>
         </Card>
         <Card>
@@ -405,8 +419,11 @@ export function Dashboard() {
             <Badge>{suggestedMinutes} min suggested</Badge>
           </div>
           <p className="mt-2 text-sm leading-7 text-muted-foreground">
-            A warm-up within your {preferences.minutesPerSession}-minute session
-            budget, using resources available now. Times are estimates.
+            {scheduledToday
+              ? "Today is one of your selected study days."
+              : "Today is outside your selected study days; this plan is optional."}{" "}
+            A suggested plan within your {preferences.minutesPerSession}-minute
+            budget. Times are estimates; you can pause a session.
           </p>
           <ol className="mt-5 divide-y">
             {tasks.map((task, index) => (
@@ -444,8 +461,8 @@ export function Dashboard() {
             ))}
           </ol>
           <p className="mt-3 text-xs leading-6 text-muted-foreground">
-            The sample does not record practice progress. Targeted plans will
-            follow when lessons and fresh practice are available.
+            Suggestions use saved sessions and concept priorities. Following a
+            link does not mark a task complete or change your scores.
           </p>
         </Card>
       </div>
@@ -501,7 +518,18 @@ export function Dashboard() {
             <ul className="mt-4 divide-y">
               {summary.recentActivity.map((event) => (
                 <li key={event.id} className="py-3">
-                  <p className="text-sm font-medium">{event.label}</p>
+                  <p className="text-sm font-medium">
+                    {event.href ? (
+                      <Link
+                        href={event.href}
+                        className="text-primary underline underline-offset-4"
+                      >
+                        {event.label}
+                      </Link>
+                    ) : (
+                      event.label
+                    )}
+                  </p>
                   <p className="mt-1 text-xs text-muted-foreground">
                     {new Intl.DateTimeFormat("en-GB", {
                       day: "numeric",

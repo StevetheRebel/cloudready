@@ -1,10 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { createLearnerData } from "../lib/cloudready/defaults";
-import {
-  dashboardSummary,
-  initialStudyPlan,
-} from "../lib/cloudready/dashboard";
+import { dashboardSummary, studyPlan } from "../lib/cloudready/dashboard";
 import type {
   AssessmentSession,
   QuestionResponse,
@@ -209,17 +206,78 @@ test("exam countdown uses calendar dates in the chosen timezone", () => {
   }
 });
 
-test("initial plan stays within the session budget and links to available sample/resources", () => {
+test("study plans stay within the session budget and use setup before study", () => {
   for (const budget of [5, 10, 15, 30, 240]) {
-    const plan = initialStudyPlan(budget);
+    const data = learner();
+    data.profile.preferences.minutesPerSession = budget;
+    const { tasks: plan } = studyPlan(data, false, now);
     assert.ok(plan.every((item) => item.minutes > 0));
     assert.ok(plan.reduce((total, item) => total + item.minutes, 0) <= budget);
-    assert.ok(
-      plan.every(
-        (item) =>
-          item.href === "/demo#sample-question" ||
-          item.href.startsWith("https://learn.microsoft.com/"),
-      ),
-    );
+    assert.ok(plan.every((item) => item.href === "/onboarding"));
   }
+});
+
+test("returning plans resume saved work, then use lessons and scoped practice", () => {
+  const data = learner();
+  data.profile.onboardingComplete = true;
+  data.profile.preferences.minutesPerSession = 30;
+  data.profile.preferences.studyDays = [1];
+  assert.equal(studyPlan(data, false, now).tasks[0].href, "/assessment/start");
+  data.sessions = [session("saved / practice", [response("a")])];
+  assert.equal(
+    studyPlan(data, false, now).tasks[0].href,
+    "/practice/saved%20%2F%20practice",
+  );
+  assert.equal(studyPlan(data, true, now).tasks[0].href, "/onboarding");
+  data.sessions = [
+    session("diagnostic", [], {
+      kind: "diagnostic",
+      status: "completed",
+      completedAt: "2026-10-25T21:20:00Z",
+    }),
+  ];
+  const before = structuredClone(data);
+  const plan = studyPlan(data, false, now);
+  assert.equal(plan.scheduledToday, true);
+  assert.ok(plan.tasks[0].href.startsWith("/learn/"));
+  assert.ok(plan.tasks[1].href.startsWith("/practice?concept="));
+  assert.deepEqual(data, before);
+  data.profile.preferences.minutesPerSession = 5;
+  assert.ok(
+    studyPlan(data, false, now).tasks.reduce(
+      (sum, task) => sum + task.minutes,
+      0,
+    ) <= 5,
+  );
+});
+
+test("dashboard links completed sessions but leaves missing targets unlinked", () => {
+  const data = learner();
+  data.sessions = [
+    session("saved / result", [], {
+      status: "completed",
+      completedAt: "2026-10-25T21:20:00Z",
+    }),
+  ];
+  data.activity = [
+    {
+      id: "one",
+      kind: "session-completed",
+      targetId: "saved / result",
+      at: "2026-10-25T21:20:00Z",
+    },
+    {
+      id: "two",
+      kind: "session-completed",
+      targetId: "missing",
+      at: "2026-10-25T21:15:00Z",
+    },
+  ];
+  const summary = dashboardSummary(data, now);
+  assert.equal(summary.latestCompletedPractice?.id, "saved / result");
+  assert.equal(
+    summary.recentActivity[0].href,
+    "/practice/saved%20%2F%20result/results",
+  );
+  assert.equal(summary.recentActivity[1].href, null);
 });

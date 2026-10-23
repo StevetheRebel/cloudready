@@ -7,7 +7,8 @@ Progress is measured from checked tasks in the Implementation order section of `
 | Diagnostic results, before concept learning    | 36 / 65                        | 55.4%                |
 | Concept learning and library                   | 40 / 65                        | 61.5%                |
 | Targeted practice and learning-gap connections | 45 / 65                        | 69.2%                |
+| Progress analytics and dashboard completion    | 50 / 65                        | 76.9%                |
 
-This counts tasks equally. It is not an estimate of remaining engineering time, production readiness, or commercial readiness. A checkbox for a small UI state and a checkbox for real authentication have very different effort. Backend accounts, email, live AI, full progress/revision/settings, and release validation still require work.
+This counts tasks equally. It is not an estimate of remaining engineering time, production readiness, or commercial readiness. A checkbox for a small UI state and a checkbox for real authentication have very different effort. Backend accounts, email, live AI, revision/settings, and release validation still require work.
 
-The current local demo has home, simulated account entry, onboarding, dashboard, a saved diagnostic, detailed results, and concept lessons/library. Lessons connect to learning gaps; targeted practice now completes the core feature loop. Full progress and dashboard completion are next; browser acceptance remains unverified. Update the calculation from the guide whenever scope or task completion changes rather than treating this percentage as fixed.
+The current local demo has home, simulated account entry, onboarding, dashboard, a saved diagnostic, detailed results, concept lessons/library, targeted practice, and progress analytics. Returning learners receive saved-session actions, report links, and study plans within their chosen budget. Revision is next; browser acceptance remains unverified. Update the calculation from the guide whenever scope or task completion changes rather than treating this percentage as fixed.

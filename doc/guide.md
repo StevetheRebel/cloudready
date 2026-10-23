@@ -104,7 +104,7 @@ The detailed diagnostic results page is implemented, including missing/incomplet
 - [x] Provide searchable, filterable concept cards.
 - [x] Handle missing lessons and distinguish reviewed status from mastery.
 
-Stage 9 provides twelve source-checked introductory lessons and the filtered library. Recap checks are labelled as repeated diagnostic material and do not change saved scores. See `doc/learning.md`. Practice is now connected. Checklist progress is 45/65 (69.2%); see `doc/progress.md`.
+Stage 9 provides twelve source-checked introductory lessons and the filtered library. Recap checks are labelled as repeated diagnostic material and do not change saved scores. See `doc/learning.md`. Practice and progress are now connected. Checklist progress is 50/65 (76.9%); see `doc/progress.md`.
 
 ### 10. Targeted practice
 
@@ -115,15 +115,17 @@ Routes: `/practice`, `/practice/[sessionId]`, `/practice/[sessionId]/results`.
 - [x] Reuse the assessment runner.
 - [x] Show session results and supported first-attempt/retry comparisons.
 
-Stage 10 is implemented with a 30-question source-checked bank, fresh-first selection, saved practice settings, resume/confirmed replacement, and contextual first-practice/retry comparisons. See `doc/practice.md`. Next: progress and dashboard completion.
+Stage 10 is implemented with a 30-question source-checked bank, fresh-first selection, saved practice settings, resume/confirmed replacement, and contextual first-practice/retry comparisons. See `doc/practice.md`.
 
 ### 11. Progress and dashboard completion — `/progress`, `/dashboard`
 
-- [ ] Calculate trends and topic metrics from persisted records.
-- [ ] Show response counts alongside percentages and explain small samples.
-- [ ] Add date filters, confidence comparisons, and text chart summaries.
-- [ ] Complete returning-learner actions, revision priorities, activity, and study plans.
-- [ ] Keep flashcard recall separate from marked-question accuracy.
+- [x] Calculate trends and topic metrics from persisted records.
+- [x] Show response counts alongside percentages and explain small samples.
+- [x] Add date filters, confidence comparisons, and text chart summaries.
+- [x] Complete returning-learner actions, revision priorities, activity, and study plans.
+- [x] Keep flashcard recall separate from marked-question accuracy.
+
+Stage 11 is implemented for local demo records. Analytics separates diagnostics, first practice, and retries; dashboard plans use saved sessions and available lessons/practice. See `doc/analytics.md` and `doc/dashboard.md`. Browser acceptance remains unverified. Next: revision.
 
 ### 12. Revision — `/revision`
 

@@ -132,6 +132,26 @@ export function dashboardSummary(data: LearnerData, now = new Date()) {
     .filter((event) => throughNow(event.at))
     .map((event) => ({
       ...event,
+      href:
+        event.kind === "session-completed"
+          ? (() => {
+              const session = data.sessions.find(
+                (item) =>
+                  item.id === event.targetId &&
+                  item.status === "completed" &&
+                  item.completedAt &&
+                  throughNow(item.completedAt),
+              );
+              return session
+                ? `/${session.kind === "diagnostic" ? "assessment" : "practice"}/${encodeURIComponent(session.id)}/results`
+                : null;
+            })()
+          : (() => {
+              const concept = concepts.find(
+                (item) => item.id === event.targetId,
+              );
+              return concept ? `/learn/${concept.slug}` : null;
+            })(),
       label:
         event.kind === "session-completed"
           ? "Completed a study session"
@@ -142,6 +162,18 @@ export function dashboardSummary(data: LearnerData, now = new Date()) {
     .sort((a, b) => Date.parse(b.at) - Date.parse(a.at))
     .slice(0, 5);
   const examDate = data.profile.preferences.examDate;
+  const latestCompletedPractice =
+    data.sessions
+      .filter(
+        (session) =>
+          session.kind === "practice" &&
+          session.status === "completed" &&
+          session.completedAt &&
+          throughNow(session.completedAt),
+      )
+      .sort(
+        (a, b) => Date.parse(b.completedAt!) - Date.parse(a.completedAt!),
+      )[0] ?? null;
   const latestCompletedDiagnostic =
     data.sessions
       .filter(
@@ -171,6 +203,7 @@ export function dashboardSummary(data: LearnerData, now = new Date()) {
       .size,
     hasDiagnostic: Boolean(latestCompletedDiagnostic),
     latestCompletedDiagnostic,
+    latestCompletedPractice,
     dueCount: dueRevision.length,
     priorities,
     topics: topicSummaries,
@@ -186,29 +219,64 @@ export function dashboardSummary(data: LearnerData, now = new Date()) {
   };
 }
 
-export function initialStudyPlan(minutes: number) {
-  const sample = Math.min(5, Math.max(3, Math.floor(minutes / 3)));
-  const explanation = Math.min(5, minutes - sample);
-  const tasks = [
-    {
-      title: "Try the confidence sample",
-      minutes: sample,
-      href: "/demo#sample-question",
-      external: false,
-    },
-    {
-      title: "Read the answer explanations",
-      minutes: explanation,
-      href: "/demo#sample-question",
-      external: false,
-    },
-  ];
-  if (minutes >= 15)
-    tasks.push({
-      title: "Compare cloud service models",
-      minutes: Math.min(5, minutes - sample - explanation),
-      href: "https://learn.microsoft.com/training/modules/describe-cloud-service-types/",
-      external: true,
-    });
-  return tasks;
+export function studyPlan(
+  data: LearnerData,
+  hasDraft = false,
+  now = new Date(),
+) {
+  const summary = dashboardSummary(data, now);
+  const preferences = data.profile.preferences;
+  const candidates: {
+    title: string;
+    minutes: number;
+    href: string;
+    external: boolean;
+  }[] = [];
+  const add = (title: string, minutes: number, href: string) =>
+    candidates.push({ title, minutes, href, external: false });
+  if (!data.profile.onboardingComplete || hasDraft) {
+    add("Finish your study preferences", 5, "/onboarding");
+  } else if (summary.unfinished) {
+    const session = summary.unfinished;
+    add(
+      `Continue your ${session.kind}`,
+      Math.max(2, (session.questionIds.length - session.responses.length) * 2),
+      `/${session.kind === "diagnostic" ? "assessment" : "practice"}/${encodeURIComponent(session.id)}`,
+    );
+  } else if (!summary.hasDiagnostic) {
+    add(
+      "Begin your diagnostic; pause whenever you need",
+      24,
+      "/assessment/start",
+    );
+  } else {
+    const lesson =
+      summary.priorities
+        .map((item) => concepts.find((concept) => concept.id === item.id))
+        .find(Boolean) ??
+      concepts.find(
+        (concept) =>
+          !data.lessonReviews.some((review) => review.conceptId === concept.id),
+      ) ??
+      concepts[0];
+    add(
+      `Revisit ${lesson.title}`,
+      lesson.readingMinutes,
+      `/learn/${lesson.slug}`,
+    );
+    add(
+      "Set up a focused practice session",
+      10,
+      `/practice?concept=${encodeURIComponent(lesson.id)}`,
+    );
+  }
+  let remaining = preferences.minutesPerSession;
+  const tasks = candidates.flatMap((task) => {
+    if (remaining <= 0) return [];
+    const minutes = Math.min(task.minutes, remaining);
+    remaining -= minutes;
+    return [{ ...task, minutes }];
+  });
+  const day = new Date(`${summary.today}T12:00:00Z`).getUTCDay();
+  return { tasks, scheduledToday: preferences.studyDays.includes(day) };
 }

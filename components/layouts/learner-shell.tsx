@@ -26,7 +26,7 @@ export function LearnerShell({
   children,
   displayName,
   isDemo = false,
-  availableRoutes = ["/dashboard", "/learn", "/practice"],
+  availableRoutes = ["/dashboard", "/learn", "/practice", "/progress"],
 }: {
   children: ReactNode;
   displayName: string;

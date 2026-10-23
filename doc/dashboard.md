@@ -1,16 +1,17 @@
-# Initial dashboard
+# Learner dashboard
 
 `/dashboard` reads the local demo profile and learner records. It creates an empty demo profile on a first direct visit and prompts for setup. Completed demo entry and onboarding's Go to dashboard action now open this route. An unfinished setup draft remains resumable without replacing the saved profile.
 
 ## Available UI
 
 - Personal greeting, study routine, preference editing, and an optional exam-date countdown.
-- Setup or diagnostic prompt, three topic cards, revision priorities, a short sample/resource study plan, weekly activity, and recent recorded events.
-- An unfinished-session card showing saved answers. Resume diagnostic and Resume practice open the shared runner for saved sessions. Practice setup is still pending. No session is discarded or replaced by opening the dashboard.
+- Setup or diagnostic prompt, three topic cards, revision priorities, a personalised study plan, weekly activity, and recent recorded events.
+- An unfinished-session card showing saved answers. Resume diagnostic and Resume practice open the shared runner for saved sessions. Practice setup is available. No session is discarded or replaced by opening the dashboard.
+- Links to the latest completed diagnostic and practice reports, a progress action, and recent-event links to available session reports or lessons. Missing historical targets remain plain text.
 - Loading, storage-error/retry, unreadable-draft, and empty states. Existing data is retained when reading fails.
 - Desktop/sidebar and mobile/bottom navigation, themes, labelled controls, and keyboard-accessible dialogs using the shared components.
 
-Diagnostic setup and the initial runner are available. Concept lessons and library are available. Targeted practice is available. Full revision, progress, and settings remain pending. The dashboard exposes only available destinations or clearly explains availability.
+Diagnostic setup, the shared runner, concept lessons/library, targeted practice, and progress analytics are available. Full revision and settings remain pending. The dashboard exposes only available destinations or clearly explains availability.
 
 ## Metric definitions
 
@@ -23,7 +24,7 @@ Diagnostic setup and the initial runner are available. Concept lessons and libra
 - Recent activity uses recorded events only. Future response/event timestamps and future session completions are excluded from current metrics.
 - Exam days compare calendar dates in the learner's timezone. No chosen date means no countdown. Past dates invite a preference update; the count is never a readiness prediction.
 
-The initial study plan is an estimated warm-up within the saved session budget. It links to the available sample and, for budgets of at least 15 minutes, the verified [Microsoft Learn cloud service types module](https://learn.microsoft.com/en-us/training/modules/describe-cloud-service-types/). Sample answers and external study do not update recorded progress. Targeted plans will be connected when learning activities exist.
+The study plan first offers unfinished setup (including drafts), then the latest unfinished session, then a diagnostic if none has been completed. Returning learners receive a priority concept lesson, or an unreviewed lesson when no priority exists, followed by concept-scoped practice setup if time remains. Task estimates are clipped to the saved session budget; a session can take longer and remains resumable. The plan explains whether today is a selected study day. Off-day plans are optional. Opening tasks changes no scores or completion records, and lesson review does not imply mastery.
 
 ## Persistence and refresh
 
@@ -31,10 +32,10 @@ The dashboard uses the versioned, schema-validated demo repository. It does not 
 
 ## Verification
 
-Seven dashboard tests cover empty records, denominators/retries/confidence, latest-answer revision priorities, data preservation, timezone week boundaries, future-record exclusion, unfinished-session selection, exam dates, and study-plan budgets. All 32 project tests pass, along with lint, TypeScript checking, and the production build. HTTP HEAD checks return 200 for `/dashboard`, `/onboarding`, and `/demo`.
+Dashboard tests cover empty records, denominators/retries/confidence, latest-answer revision priorities, data preservation, timezone week boundaries, future-record exclusion, unfinished-session selection, exam dates, study-plan budgets and routing, and report links. See `doc/analytics.md` for stage 11 verification.
 
 Browser interaction and visual verification remain unavailable following the earlier browser access-policy block. Responsive layout, keyboard interactions, local-storage refresh, and the full onboarding-to-dashboard flow still need browser review before release.
 
 ## Next integration
 
-Diagnostic start/resume is connected; see `doc/assessment.md`. Saved practice sessions also use the shared runner; new practice setup is now available. The dashboard now links to the latest completed diagnostic report, selected by completion time; see `doc/results.md`. Revision priorities now link to available concept lessons. Progress and dashboard completion are next.
+Diagnostic start/resume is connected; see `doc/assessment.md`. Saved practice sessions use the shared runner; practice setup is available. Reports are selected by completion time. Revision priorities link to available concept lessons. Progress analytics is connected; the full revision queue is next.
