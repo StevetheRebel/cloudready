@@ -179,18 +179,20 @@ Stage 15 is implemented with a complete study-loop page, current-demo privacy/te
 
 ## Main-journey acceptance check
 
+Connected service/data tests now cover this journey, including repository recreation and failed-save recovery. See `doc/acceptance.md`. The user subsequently confirmed that the core diagnostic → lesson → practice → progress flow, layouts/mobile, keyboard use, and refresh/resume passed. Checked items below reflect that report; unchecked entry/preference cases were not explicitly reported. Automated tests alone do not establish browser acceptance.
+
 - [ ] Enter from home through demo mode or working account access.
 - [ ] Save study preferences.
-- [ ] Complete a diagnostic with confidence ratings and explanations.
-- [ ] Identify and review a weak concept.
-- [ ] Complete fresh targeted practice.
-- [ ] See progress updated from recorded answers.
-- [ ] Resume an unfinished session after refresh.
-- [ ] Complete the journey on mobile and using a keyboard.
+- [x] Complete a diagnostic with confidence ratings and explanations.
+- [x] Identify and review a weak concept.
+- [x] Complete fresh targeted practice.
+- [x] See progress updated from recorded answers.
+- [x] Resume an unfinished session after refresh.
+- [x] Complete the journey on mobile and using a keyboard.
 
 ## Documentation before delivery
 
-- [ ] Maintain a README covering setup, routes, demo access, implemented and simulated features, content sources, scoring, revision scheduling, AI prompts and fallback behaviour, and known limitations.
+- [x] Maintain a README covering setup, routes, demo access, implemented and simulated features, content sources, scoring, revision scheduling, AI prompts and fallback behaviour, and known limitations.
 
 ## Scope and source handling
 
