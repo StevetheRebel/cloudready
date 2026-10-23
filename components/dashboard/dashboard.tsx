@@ -27,7 +27,7 @@ import {
   initialStudyPlan,
   MIN_TOPIC_RESPONSES,
 } from "@/lib/cloudready/dashboard";
-import { topics } from "@/lib/cloudready/content";
+import { topics, concepts } from "@/lib/cloudready/content";
 import { cn } from "@/lib/utils";
 
 function Stat({
@@ -157,7 +157,7 @@ export function Dashboard() {
                 ? "An unfinished session is saved in this browser. Your submitted answers are kept when you resume."
                 : !summary.hasDiagnostic
                   ? "Explore twelve untimed questions across the three topic groups. Choose an answer and a confidence rating, then learn from the explanation."
-                  : "Your latest answers and confidence ratings help prioritise revision. Full lessons, practice, and revision actions are coming soon."}
+                  : "Your latest answers and confidence ratings help prioritise revision. Open a concept lesson to revisit the reasoning; targeted practice and the full revision queue are coming later."}
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             {needsSetup ? (
@@ -177,8 +177,8 @@ export function Dashboard() {
                 See revision priorities
               </a>
             ) : (
-              <Link href="/demo" className={buttonVariants()}>
-                Try the sample
+              <Link href="/learn" className={buttonVariants()}>
+                Browse concept lessons
               </Link>
             )}
             {needsSetup ||
@@ -347,7 +347,18 @@ export function Dashboard() {
                       {index + 1}
                     </span>
                     <div>
-                      <h3 className="text-sm font-semibold">{item.title}</h3>
+                      <h3 className="text-sm font-semibold">
+                        {concepts.find((concept) => concept.id === item.id) ? (
+                          <Link
+                            href={`/learn/${concepts.find((concept) => concept.id === item.id)!.slug}`}
+                            className="text-primary underline underline-offset-4"
+                          >
+                            {item.title}
+                          </Link>
+                        ) : (
+                          item.title
+                        )}
+                      </h3>
                       <p className="mt-1 text-sm leading-6 text-muted-foreground">
                         {item.reason}
                       </p>
@@ -374,7 +385,8 @@ export function Dashboard() {
             </div>
           )}
           <p className="mt-4 text-xs leading-6 text-muted-foreground">
-            Concept review and the full revision queue are coming soon.
+            Concept lessons are available now. The full revision queue is coming
+            later.
           </p>
         </Card>
         <Card>

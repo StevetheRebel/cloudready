@@ -95,14 +95,16 @@ Stage 7 is implemented without live AI. The shared runner supports persisted dia
 - [ ] Connect learning gaps to concept lessons and targeted practice when stages 9–10 exist.
 - [x] Provide expandable answer review.
 
-The detailed diagnostic results page is implemented, including missing/incomplete/replaced-session states and preserved historical scoring. Lessons and targeted practice are clearly labelled pending. See `doc/results.md`. Next: concept learning, starting with `/learn/[conceptSlug]`, then `/learn`.
+The detailed diagnostic results page is implemented, including missing/incomplete/replaced-session states and preserved historical scoring. Learning gaps now link to concept lessons; targeted practice is still pending. See `doc/results.md`.
 
 ### 9. Concept learning — `/learn/[conceptSlug]`, then `/learn`
 
-- [ ] Implement explanations, comparisons, fictional local scenarios, and references.
-- [ ] Add knowledge checks and reviewed/revision actions.
-- [ ] Provide searchable, filterable concept cards.
-- [ ] Handle missing lessons and distinguish reviewed status from mastery.
+- [x] Implement explanations, comparisons, fictional local scenarios, and references.
+- [x] Add knowledge checks and reviewed/revision actions.
+- [x] Provide searchable, filterable concept cards.
+- [x] Handle missing lessons and distinguish reviewed status from mastery.
+
+Stage 9 provides twelve source-checked introductory lessons and the filtered library. Recap checks are labelled as repeated diagnostic material and do not change saved scores. See `doc/learning.md`. Next: targeted practice. Checklist progress is 40/65 (61.5%); see `doc/progress.md`.
 
 ### 10. Targeted practice
 

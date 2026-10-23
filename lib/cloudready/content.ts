@@ -1,5 +1,6 @@
 import type { Concept, Question, TopicId } from "./models";
 import { diagnosticQuestions } from "./diagnostic-content";
+import { lessonConcepts } from "./lesson-content";
 
 export const topics: ReadonlyArray<{
   id: TopicId;
@@ -26,4 +27,4 @@ export const topics: ReadonlyArray<{
 
 // Initial diagnostic bank; expand before claiming fresh targeted practice.
 export const questions: readonly Question[] = diagnosticQuestions;
-export const concepts: readonly Concept[] = [];
+export const concepts: readonly Concept[] = lessonConcepts;

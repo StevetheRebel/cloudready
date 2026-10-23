@@ -198,6 +198,7 @@ export interface Concept {
   objective: string;
   explanation: string;
   keyTerms: string[];
+  comparison: { label: string; detail: string }[];
   localScenario: string;
   misunderstandings: string[];
   recap: string;

@@ -23,7 +23,7 @@ The v1 records do not snapshot question text or the historical correct-option ID
 
 ## Available actions and states
 
-The report offers answer review, Microsoft Learn references, and the dashboard. Concept lessons and targeted practice are visibly unavailable until their routes exist; no broken links imply that these actions work.
+The report offers answer review, Microsoft Learn references, and the dashboard. Concept lessons now open from learning priorities and the library. Targeted practice remains visibly unavailable until its routes exist.
 
 Loading, unreadable/blocked storage, retry/data controls, missing session, in-progress/resume, replaced-session, and non-diagnostic-session states are provided. An unfinished diagnostic is not shown as a completed report. A practice-session link offers the shared session screen. Records are local to the browser and site, so a URL opened on another device may have no session.
 
@@ -37,8 +37,8 @@ Browser interaction and visual checks remain unavailable under the earlier brows
 
 For local review: complete a diagnostic, choose Finish diagnostic on its last feedback card, compare the saved counts with the expanded answers, then reopen the report from the dashboard. Confirm that refreshing keeps the same report and that lessons/practice clearly state their availability.
 
-No credentials or product decisions are needed for this milestone. It remains uncommitted for review under the agreed workflow. When the user proceeds, commit this completed milestone before starting concept learning.
+No credentials or product decisions were needed for this milestone. It was committed as `4c266d8` when the user proceeded to concept learning.
 
 ## Next
 
-Build concept lessons at `/learn/[conceptSlug]`, followed by the searchable `/learn` library. Use source-checked explanations, comparisons, fictional local scenarios, knowledge checks, and reviewed/revision actions. Connect results to these lessons when they are available. Targeted practice follows afterward.
+Concept lessons and the learning library are now implemented and connected; see `doc/learning.md`. Targeted practice is next.

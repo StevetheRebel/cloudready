@@ -16,7 +16,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { EmptyState, ErrorState, LoadingState } from "@/components/ui/states";
 import { diagnosticResults } from "@/lib/cloudready/results";
-import { topics } from "@/lib/cloudready/content";
+import { topics, concepts } from "@/lib/cloudready/content";
 
 export function DiagnosticResults({ sessionId }: { sessionId: string }) {
   const { state, refresh } = useLearnerData();
@@ -331,6 +331,16 @@ export function DiagnosticResults({ sessionId }: { sessionId: string }) {
                     >
                       Review this answer
                     </a>
+                    {concepts.find(
+                      (concept) => concept.id === item.conceptId,
+                    ) ? (
+                      <Link
+                        href={`/learn/${concepts.find((concept) => concept.id === item.conceptId)!.slug}`}
+                        className={buttonVariants()}
+                      >
+                        Study this concept
+                      </Link>
+                    ) : null}
                   </div>
                 </Card>
               </li>
@@ -358,17 +368,20 @@ export function DiagnosticResults({ sessionId }: { sessionId: string }) {
           available in each review.
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
-          <Button variant="secondary" disabled>
-            Concept lessons · Coming next
-          </Button>
+          <Link
+            href="/learn"
+            className={buttonVariants({ variant: "secondary" })}
+          >
+            Open concept lessons
+          </Link>
           <Button variant="secondary" disabled>
             Targeted practice · Coming later
           </Button>
           {dashboard}
         </div>
         <p className="mt-3 text-xs leading-6 text-muted-foreground">
-          Lesson and practice pages are not available yet. Reviewing an answer
-          here does not record a new attempt or mark a concept as mastered.
+          Targeted practice is not available yet. Reviewing an answer here or
+          marking a lesson reviewed does not mark a concept as mastered.
         </p>
       </Card>
       <section
