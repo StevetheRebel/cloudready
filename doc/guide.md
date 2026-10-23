@@ -104,7 +104,7 @@ The detailed diagnostic results page is implemented, including missing/incomplet
 - [x] Provide searchable, filterable concept cards.
 - [x] Handle missing lessons and distinguish reviewed status from mastery.
 
-Stage 9 provides twelve source-checked introductory lessons and the filtered library. Recap checks are labelled as repeated diagnostic material and do not change saved scores. See `doc/learning.md`. Practice, progress, revision, settings, and demo recovery are now connected. Checklist progress is 60/65 (92.3%); see `doc/progress.md`.
+Stage 9 provides twelve source-checked introductory lessons and the filtered library. Recap checks are labelled as repeated diagnostic material and do not change saved scores. See `doc/learning.md`. Practice, progress, revision, settings, demo recovery, and supporting public pages are connected. Checklist progress is 63/65 (96.9%); see `doc/progress.md`.
 
 ### 10. Targeted practice
 
@@ -151,15 +151,17 @@ Stage 13 is implemented for the demo, including validated edits, tab drafts/navi
 - [x] Add recovery forms, neutral confirmations, and invalid/expired link states.
 - [ ] Connect real email delivery if these flows are live.
 
-Stage 14 demo UI is implemented, including missing/used-link examples and validated password confirmation. Public preview states do not validate real tokens or change credentials. Live accounts/email remain deferred under the selected demo scope. See `doc/recovery.md`. Next: supporting public pages and public-navigation/404 completion.
+Stage 14 demo UI is implemented, including missing/used-link examples and validated password confirmation. Public preview states do not validate real tokens or change credentials. Live accounts/email remain deferred under the selected demo scope. See `doc/recovery.md`.
 
 ### 15. Supporting public pages
 
 Routes: `/how-it-works`, `/privacy`, `/terms`.
 
-- [ ] Complete product explanation, confidence examples, and progress limitations.
-- [ ] Ensure privacy and terms accurately describe implemented behaviour.
-- [ ] Complete the useful 404 page and verify public navigation.
+- [x] Complete product explanation, confidence examples, and progress limitations.
+- [x] Ensure privacy and terms accurately describe implemented behaviour.
+- [x] Complete the useful 404 page and verify public navigation.
+
+Stage 15 is implemented with a complete study-loop page, current-demo privacy/terms, public navigation, and custom root 404. Navigation verification uses generated build HTML and route/fragment checks; browser interaction and visual acceptance remain unverified. See `doc/public-pages.md`. Next: the main-journey acceptance checklist and release review below. Real authentication/email remain separately deferred, not completed by this percentage.
 
 ## Requirements applied throughout
 

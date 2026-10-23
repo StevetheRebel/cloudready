@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Brand } from "@/components/brand";
 import { EntryAction } from "@/components/site/entry-action";
+import { DemoEntry } from "@/components/auth/demo-entry";
 
 export function MarketingHeader() {
   return (
@@ -12,10 +13,10 @@ export function MarketingHeader() {
           className="order-3 col-span-2 flex flex-wrap items-center justify-center gap-x-6 gap-y-1 border-t pt-2 text-sm lg:order-none lg:col-span-1 lg:border-0 lg:pt-0"
         >
           <Link
-            href="/#how-it-works"
+            href="/how-it-works"
             className="inline-flex min-h-11 items-center font-medium text-muted-foreground hover:text-primary"
           >
-            How CloudReady works
+            How it works
           </Link>
           <Link
             href="/#features"
@@ -27,7 +28,9 @@ export function MarketingHeader() {
             Sign in
           </EntryAction>
         </nav>
-        <EntryAction className="text-xs sm:text-sm">Start learning</EntryAction>
+        <DemoEntry variant="primary" className="text-xs sm:text-sm">
+          Open demo
+        </DemoEntry>
       </div>
     </header>
   );

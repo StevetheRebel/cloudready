@@ -13,7 +13,7 @@ export function MarketingFooter() {
             <p className="mt-4 max-w-sm text-sm leading-6 text-muted-foreground">
               Identify misunderstandings. Practise weak topics.
               <br />
-              Measure improvement.
+              Track your practice.
             </p>
           </div>
           <nav
@@ -21,10 +21,10 @@ export function MarketingFooter() {
             className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm"
           >
             <Link
-              href="/#how-it-works"
+              href="/how-it-works"
               className="inline-flex min-h-11 items-center text-muted-foreground hover:text-primary"
             >
-              Product explanation
+              How it works
             </Link>
             <EntryAction
               kind="privacy"

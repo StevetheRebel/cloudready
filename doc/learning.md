@@ -34,4 +34,4 @@ Browser interaction and visual checks remain blocked by the earlier browser acce
 
 The prior results milestone was committed locally as `4c266d8` when this step began. The learning milestone was committed locally as `473900d` when the user proceeded. Push is separate and only performed when requested.
 
-Targeted practice is now implemented with a 30-question source-checked bank. Progress and revision are connected. Settings is connected. Demo account recovery is implemented. Next: supporting public pages.
+Targeted practice is now implemented with a 30-question source-checked bank. Progress and revision are connected. Settings is connected. Demo account recovery is implemented. Supporting public pages are implemented. Next: full-journey acceptance.

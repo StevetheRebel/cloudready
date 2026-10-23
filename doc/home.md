@@ -15,7 +15,7 @@ The interactive sample uses component state only. It creates no account, writes 
 
 Home demo actions open onboarding for incomplete profiles or drafts, and the dashboard for completed learners. The on-page sample remains available. Account actions open labelled demo forms; diagnostic actions open `/assessment/start`. Privacy and terms link to initial accurate demo information pages. Review and complete those policies before real registration opens.
 
-The preview compares IaaS and PaaS responsibilities using fictional organisations. The original question and explanation reference [Microsoft Learn: Describe cloud service types](https://learn.microsoft.com/training/modules/describe-cloud-service-types/), checked on 23 October 2026. No real exam question or Microsoft logo is used. The initial diagnostic now has 12 source-checked original questions. The lesson bank remains pending.
+The preview compares IaaS and PaaS responsibilities using fictional organisations. The original question and explanation reference [Microsoft Learn: Describe cloud service types](https://learn.microsoft.com/training/modules/describe-cloud-service-types/), checked on 23 October 2026. No real exam question or Microsoft logo is used. The initial diagnostic now has 12 source-checked original questions. Twelve concept lessons and the learning library are now available.
 
 ## Verification
 
@@ -23,4 +23,4 @@ Browser checks cover required selections, confident incorrect feedback, uncertai
 
 ## Next
 
-The demo scope of stage 3 is complete; see `doc/auth.md`. Onboarding, dashboard, diagnostic setup, and the initial runner are now implemented. Connect real sign-up/sign-in with Better Auth and Neon when configured, and keep demo access independently usable. The standalone how-it-works page and final policy review remain later work.
+The demo scope of stage 3 is complete; see `doc/auth.md`. Onboarding, dashboard, diagnostic setup, and the initial runner are now implemented. Connect real sign-up/sign-in with Better Auth and Neon when configured, and keep demo access independently usable. The standalone how-it-works page, current-demo policy review, and root 404 are implemented; see `doc/public-pages.md`. Full-journey acceptance is next.

@@ -38,4 +38,4 @@ Browser interaction and visual verification remain unavailable following the ear
 
 ## Next integration
 
-Diagnostic start/resume is connected; see `doc/assessment.md`. Saved practice sessions use the shared runner; practice setup is available. Reports are selected by completion time. Revision priorities link to available concept lessons. Progress analytics is connected; the full revision queue is connected. Settings is connected. Demo account recovery is implemented. Supporting public pages are next.
+Diagnostic start/resume is connected; see `doc/assessment.md`. Saved practice sessions use the shared runner; practice setup is available. Reports are selected by completion time. Revision priorities link to available concept lessons. Progress analytics is connected; the full revision queue is connected. Settings is connected. Demo account recovery is implemented. Supporting public pages are implemented. Full-journey acceptance is next.

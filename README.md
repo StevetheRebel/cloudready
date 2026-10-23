@@ -1,12 +1,12 @@
 # CloudReady
 
-CloudReady helps AZ-900 learners identify misunderstandings, practise weak topics, and measure improvement.
+CloudReady helps AZ-900 learners identify misunderstandings, practise weak topics, and track their learning.
 
 Unofficial study tool. Not affiliated with or endorsed by Microsoft.
 
 ## Current stage
 
-Stages 1–14 UI are implemented for the local demo: home, simulated account forms, onboarding, dashboard, and a 12-question untimed diagnostic with confidence, per-option explanations, simpler explanations, fictional local examples, saved progress, resume, and confirmed restart. AI help uses an honest source-checked fallback. Detailed diagnostic results include topic/confidence breakdowns, learning priorities, and expandable answer review. Twelve introductory concept lessons and a searchable/filterable learning library are available, with saved reviewed/revision actions. Targeted practice supports a 30-question bank, fresh-first selection, configurable sessions, resume, and contextual results. Progress analytics adds date-filtered trends, topic/confidence breakdowns, and session history. Dashboard plans use saved sessions and concept priorities. Revision now supports due/upcoming/all views, reveal-and-rate recall, saved schedules, and removal with undo. Settings now supports profile/preferences, saved-progress export, confirmed resets, and unsaved tab drafts. Recovery/request/reset-link previews are available without email or credential changes. Real authentication remains pending; browser acceptance remains unverified.
+Stages 1–15 UI are implemented for the local demo: home, simulated account forms, onboarding, dashboard, and a 12-question untimed diagnostic with confidence, per-option explanations, simpler explanations, fictional local examples, saved progress, resume, and confirmed restart. AI help uses an honest source-checked fallback. Detailed diagnostic results include topic/confidence breakdowns, learning priorities, and expandable answer review. Twelve introductory concept lessons and a searchable/filterable learning library are available, with saved reviewed/revision actions. Targeted practice supports a 30-question bank, fresh-first selection, configurable sessions, resume, and contextual results. Progress analytics adds date-filtered trends, topic/confidence breakdowns, and session history. Dashboard plans use saved sessions and concept priorities. Revision now supports due/upcoming/all views, reveal-and-rate recall, saved schedules, and removal with undo. Settings now supports profile/preferences, saved-progress export, confirmed resets, and unsaved tab drafts. Recovery/request/reset-link previews are available without email or credential changes. Supporting public pages explain the study loop, confidence, data controls, and demo limits; a custom 404 provides useful destinations. Real authentication remains pending; browser acceptance remains unverified.
 
 ## Local setup
 
@@ -20,6 +20,7 @@ Open the Local URL printed by Next.js. It defaults to http://localhost:3000, cho
 ## Available routes
 
 - `/`: responsive home page with product explanation, labelled sample dashboard, interactive sample question, and account/demo entry links. Diagnostic actions open setup.
+- `/how-it-works`: complete demo study loop, confidence examples, score interpretation, and feature/storage limits.
 - `/sign-up`: validated demo account form with simulated verification, resend, and change-email states.
 - `/sign-in`: demo sign-in using the public sample account shown on the page. `?reason=expired` shows the expired-session preview.
 - `/forgot-password`: validated example-email form with a neutral, explicitly unsent recovery confirmation.
@@ -38,7 +39,8 @@ Open the Local URL printed by Next.js. It defaults to http://localhost:3000, cho
 - `/progress`: date-filtered answer trends, topic/confidence comparisons, separate learning activity, and completed-session reports.
 - `/revision`: due/upcoming/all queue, reveal-before-rating recall, saved review dates, and removal with undo.
 - `/settings`: profile/preferences, existing theme controls, JSON export, confirmed learning/demo resets, and unsaved settings drafts.
-- `/privacy`, `/terms`: initial information accurately describing the current demo. Review before real account access opens.
+- `/privacy`, `/terms`: current-demo information covering recovery previews, local records/drafts, export/reset scope, confidence, and content limits. Review again before real account access opens.
+- Unmatched routes: custom 404 with home, library, and How it works links. Missing concept lessons keep their dedicated not-found page.
 - `/foundation`: component and layout preview with themes, validation, notifications, and locally saved demo preferences. Excluded from search indexing; remove or restrict before launch.
 
 ## Checks
@@ -61,6 +63,7 @@ The foundation and learner demo store only validated demo records in this browse
 - [Build order](doc/guide.md)
 - [Foundation architecture, demo storage, scoring, scheduling, and limitations](doc/foundation.md)
 - [Home page behaviour and verification](doc/home.md)
+- [Supporting public pages, navigation, 404, and validation limits](doc/public-pages.md)
 - [Demo account flows, sample details, and verification limits](doc/auth.md)
 - [Demo recovery, public reset-link states, and live-integration limits](doc/recovery.md)
 - [Onboarding, draft persistence, and completion behaviour](doc/onboarding.md)

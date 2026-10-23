@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: { default: "CloudReady", template: "%s | CloudReady" },
   description:
-    "CloudReady helps AZ-900 learners identify misunderstandings, practise weak topics, and measure improvement.",
+    "CloudReady helps AZ-900 learners identify misunderstandings, practise weak topics, and track their learning.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

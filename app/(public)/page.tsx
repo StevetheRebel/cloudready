@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { DemoEntry } from "@/components/auth/demo-entry";
 import {
   ArrowRight,
@@ -42,7 +43,7 @@ const steps = [
   },
   {
     title: "Practise fresh. See what changes.",
-    text: "Try new questions on the same concepts and compare your first attempts with later practice.",
+    text: "Try unanswered questions first, then review repeat attempts with their context. Question familiarity can affect your scores.",
     icon: TrendingUp,
   },
 ];
@@ -348,11 +349,11 @@ export default function Page() {
         </h2>
         <p className="mx-auto mt-5 max-w-lg text-base leading-7 text-muted-foreground">
           CloudReady helps AZ-900 learners identify misunderstandings, practise
-          weak topics, and measure improvement.
+          weak topics, and track their learning.
         </p>
         <div className="mt-7 flex flex-wrap justify-center gap-3">
           <EntryAction>
-            Create your free account
+            Preview account setup
             <ArrowRight aria-hidden="true" size={16} />
           </EntryAction>
           <DemoEntry>Try the demo</DemoEntry>
@@ -360,6 +361,12 @@ export default function Page() {
         <p className="mt-4 text-xs leading-6 text-muted-foreground">
           Try demo account setup. Real accounts are not connected yet.
         </p>
+        <Link
+          href="/how-it-works"
+          className="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-primary underline underline-offset-4"
+        >
+          See the full study flow
+        </Link>
       </section>
     </>
   );

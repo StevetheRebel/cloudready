@@ -40,4 +40,4 @@ User validation: sign-in → Forgot password → example request → neutral con
 
 Real recovery is deferred until Better Auth/Neon and email are connected. It will need server-authorised, expiring, single-use reset tokens and server-side password changes. Public preview parameters must never become live authorisation. The live-email task remains unchecked in the guide; the current 60/65 checklist count is not production readiness.
 
-Next: stage 15 supporting public pages, product explanation/confidence examples, privacy/terms review against implemented behaviour, and public navigation/404 completion.
+Stage 15 public pages, product explanation/confidence examples, privacy/terms review, and public navigation/404 are now implemented. Next: full-journey acceptance and release review.
