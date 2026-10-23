@@ -104,7 +104,7 @@ The detailed diagnostic results page is implemented, including missing/incomplet
 - [x] Provide searchable, filterable concept cards.
 - [x] Handle missing lessons and distinguish reviewed status from mastery.
 
-Stage 9 provides twelve source-checked introductory lessons and the filtered library. Recap checks are labelled as repeated diagnostic material and do not change saved scores. See `doc/learning.md`. Practice, progress, and revision are now connected. Checklist progress is 54/65 (83.1%); see `doc/progress.md`.
+Stage 9 provides twelve source-checked introductory lessons and the filtered library. Recap checks are labelled as repeated diagnostic material and do not change saved scores. See `doc/learning.md`. Practice, progress, revision, and settings are now connected. Checklist progress is 59/65 (90.8%); see `doc/progress.md`.
 
 ### 10. Targeted practice
 
@@ -134,15 +134,17 @@ Stage 11 is implemented for local demo records. Analytics separates diagnostics,
 - [x] Persist next review dates and support removal with undo.
 - [x] Add the up-to-date empty state.
 
-Stage 12 is implemented for local demo records, including stale-action guards, failed-save recovery, missing-content handling, and removal with undo. See `doc/revision.md`. Browser acceptance remains unverified. Next: settings.
+Stage 12 is implemented for local demo records, including stale-action guards, failed-save recovery, missing-content handling, and removal with undo. See `doc/revision.md`. Browser acceptance remains unverified.
 
 ### 13. Settings — `/settings`
 
-- [ ] Edit profile and study preferences.
-- [ ] Support light, dark, and system themes.
-- [ ] Add account actions and JSON progress export.
-- [ ] Confirm learning-data resets and explain demo-reset scope.
-- [ ] Handle unsaved changes.
+- [x] Edit profile and study preferences.
+- [x] Support light, dark, and system themes.
+- [x] Add account actions and JSON progress export.
+- [x] Confirm learning-data resets and explain demo-reset scope.
+- [x] Handle unsaved changes.
+
+Stage 13 is implemented for the demo, including validated edits, tab drafts/navigation warnings, saved-progress export, and confirmed resets with explicit scope. Theme controls save immediately. Live email/password/account deletion actions remain unavailable with explanations. See `doc/settings.md`. Next: demo account recovery forms and states; real email remains deferred.
 
 ### 14. Account recovery — `/forgot-password`, `/reset-password`
 

@@ -32,6 +32,7 @@ export function LearnerShell({
     "/practice",
     "/revision",
     "/progress",
+    "/settings",
   ],
 }: {
   children: ReactNode;

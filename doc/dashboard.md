@@ -11,7 +11,7 @@
 - Loading, storage-error/retry, unreadable-draft, and empty states. Existing data is retained when reading fails.
 - Desktop/sidebar and mobile/bottom navigation, themes, labelled controls, and keyboard-accessible dialogs using the shared components.
 
-Diagnostic setup, the shared runner, concept lessons/library, targeted practice, and progress analytics are available. The revision queue is available; settings remains pending. The dashboard exposes only available destinations or clearly explains availability.
+Diagnostic setup, the shared runner, concept lessons/library, targeted practice, and progress analytics are available. The revision queue is available; settings is available. The dashboard exposes only available destinations or clearly explains availability.
 
 ## Metric definitions
 
@@ -38,4 +38,4 @@ Browser interaction and visual verification remain unavailable following the ear
 
 ## Next integration
 
-Diagnostic start/resume is connected; see `doc/assessment.md`. Saved practice sessions use the shared runner; practice setup is available. Reports are selected by completion time. Revision priorities link to available concept lessons. Progress analytics is connected; the full revision queue is connected. Settings is next.
+Diagnostic start/resume is connected; see `doc/assessment.md`. Saved practice sessions use the shared runner; practice setup is available. Reports are selected by completion time. Revision priorities link to available concept lessons. Progress analytics is connected; the full revision queue is connected. Settings is connected. Demo account recovery is next.

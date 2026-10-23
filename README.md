@@ -6,7 +6,7 @@ Unofficial study tool. Not affiliated with or endorsed by Microsoft.
 
 ## Current stage
 
-Stages 1–12 UI are implemented for the local demo: home, simulated account forms, onboarding, dashboard, and a 12-question untimed diagnostic with confidence, per-option explanations, simpler explanations, fictional local examples, saved progress, resume, and confirmed restart. AI help uses an honest source-checked fallback. Detailed diagnostic results include topic/confidence breakdowns, learning priorities, and expandable answer review. Twelve introductory concept lessons and a searchable/filterable learning library are available, with saved reviewed/revision actions. Targeted practice supports a 30-question bank, fresh-first selection, configurable sessions, resume, and contextual results. Progress analytics adds date-filtered trends, topic/confidence breakdowns, and session history. Dashboard plans use saved sessions and concept priorities. Revision now supports due/upcoming/all views, reveal-and-rate recall, saved schedules, and removal with undo. Settings and real authentication remain pending; browser acceptance remains unverified.
+Stages 1–13 UI are implemented for the local demo: home, simulated account forms, onboarding, dashboard, and a 12-question untimed diagnostic with confidence, per-option explanations, simpler explanations, fictional local examples, saved progress, resume, and confirmed restart. AI help uses an honest source-checked fallback. Detailed diagnostic results include topic/confidence breakdowns, learning priorities, and expandable answer review. Twelve introductory concept lessons and a searchable/filterable learning library are available, with saved reviewed/revision actions. Targeted practice supports a 30-question bank, fresh-first selection, configurable sessions, resume, and contextual results. Progress analytics adds date-filtered trends, topic/confidence breakdowns, and session history. Dashboard plans use saved sessions and concept priorities. Revision now supports due/upcoming/all views, reveal-and-rate recall, saved schedules, and removal with undo. Settings now supports profile/preferences, saved-progress export, confirmed resets, and unsaved tab drafts. Real authentication remains pending; browser acceptance remains unverified.
 
 ## Local setup
 
@@ -35,6 +35,7 @@ Open the Local URL printed by Next.js. It defaults to http://localhost:3000, cho
 - `/practice/[sessionId]/results`: contextual practice results, comparisons, and saved-answer review.
 - `/progress`: date-filtered answer trends, topic/confidence comparisons, separate learning activity, and completed-session reports.
 - `/revision`: due/upcoming/all queue, reveal-before-rating recall, saved review dates, and removal with undo.
+- `/settings`: profile/preferences, existing theme controls, JSON export, confirmed learning/demo resets, and unsaved settings drafts.
 - `/privacy`, `/terms`: initial information accurately describing the current demo. Review before real account access opens.
 - `/foundation`: component and layout preview with themes, validation, notifications, and locally saved demo preferences. Excluded from search indexing; remove or restrict before launch.
 
@@ -68,6 +69,7 @@ The foundation and learner demo store only validated demo records in this browse
 - [Practice pools, saved sessions, results, and comparison limits](doc/practice.md)
 - [Progress analytics, filters, denominators, and verification limits](doc/analytics.md)
 - [Revision queue, recall scheduling, removal, and undo](doc/revision.md)
+- [Settings, export, reset scope, and unsaved edits](doc/settings.md)
 - [Implementation progress and measurement limits](doc/progress.md)
 
 Neon, Drizzle, and Better Auth will be integrated when real accounts are built. AI explanations will use server-side credentials and reviewed fallback content; no live prompts are implemented in this stage.

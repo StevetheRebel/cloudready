@@ -33,4 +33,4 @@ All 93 project tests and lint passed. After the final storage-marker adjustment,
 
 Browser visual and interaction checks remain unverified following the earlier access-policy block; preview-server checks were also blocked in the previous milestone and were not retried. Validate reveal-before-rating, each rating, the up-to-date state, persistence after refresh, removal/undo, mobile layouts, keyboard focus, and light/dark themes in your browser. No new credentials are required.
 
-The progress milestone was committed as `ef7a7df` before starting revision. This milestone remains uncommitted for review. Next: settings, profile/preferences, progress export, confirmed data reset, and unsaved-change handling.
+The progress milestone was committed as `ef7a7df` before starting revision. This milestone remains uncommitted for review. Settings is now connected, including profile/preferences, export, reset, and unsaved-change handling. Next: demo account recovery.

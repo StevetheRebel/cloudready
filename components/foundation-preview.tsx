@@ -20,6 +20,7 @@ import { useToast } from "@/components/ui/toast-provider";
 import { topics } from "@/lib/cloudready/content";
 import { createDemoRepository } from "@/lib/cloudready/persistence";
 import { createDemoService } from "@/lib/cloudready/services";
+import { createSettingsDraftStore } from "@/lib/cloudready/settings";
 import type { LearnerData } from "@/lib/cloudready/models";
 
 function browserService() {
@@ -320,10 +321,11 @@ export function FoundationPreview() {
         open={dialogOpen}
         onOpenChange={setDialogOpen}
         title="Reset this browser’s demo?"
-        description="This removes the demo profile, preferences, onboarding draft, sessions, responses, lesson reviews, revision schedule, and activity saved in this browser. Your theme choice is kept. Real accounts are not affected."
+        description="This removes the demo profile, preferences, onboarding draft, sessions, responses, lesson reviews, revision schedule, activity, and this tab’s settings draft. Theme and downloaded exports are kept. Other tabs’ settings drafts cannot be cleared here. Real accounts are not affected."
         confirmLabel="Reset demo"
         destructive
         onConfirm={() => {
+          createSettingsDraftStore(window.sessionStorage).clear();
           browserService().reset();
           setData(null);
           setName("");

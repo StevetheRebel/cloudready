@@ -44,6 +44,13 @@ export default function Page() {
             answers only while their page is open and do not update saved
             progress.
           </p>
+          <p className="mt-3">
+            Unsaved settings edits, including names and study preferences, are
+            kept in a separate draft in this tab’s session storage when it is
+            available. Save or discard them explicitly. Closing the tab normally
+            clears session storage, though browser session restoration can
+            retain it.
+          </p>
         </section>
         <section>
           <h2 className="mb-3 text-lg font-semibold text-foreground">
@@ -51,15 +58,18 @@ export default function Page() {
           </h2>
           <p>
             You can remove locally stored data using your browser’s site-data
-            controls. The{" "}
+            controls. Your{" "}
             <Link
-              href="/foundation"
+              href="/settings"
               className="text-primary underline underline-offset-4"
             >
-              foundation preview
+              settings
             </Link>{" "}
-            also provides a confirmed reset of demo learner data while keeping
-            the theme preference.
+            provide JSON export and confirmed learning-only or entire-demo
+            resets. Entire-demo reset keeps the theme and previously downloaded
+            exports; it clears this tab’s settings draft but cannot clear other
+            tabs’ temporary drafts. Exports contain saved profile and learning
+            data, so choose where to keep or share the downloaded file.
           </p>
         </section>
         <section>
