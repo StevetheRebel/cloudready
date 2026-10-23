@@ -82,5 +82,6 @@ The implementation checklist remains 63/65 (96.9%), with real account integratio
 - [Settings, export, reset scope, and unsaved edits](doc/settings.md)
 - [Implementation progress and measurement limits](doc/progress.md)
 - [Connected journey acceptance and release review](doc/acceptance.md)
+- [Demo release candidate, walkthrough, and publishing handoff](doc/demo-release.md)
 
 Neon, Drizzle, and Better Auth will be integrated when real accounts are built. AI explanations will use server-side credentials and reviewed fallback content; no live prompts are implemented in this stage.
