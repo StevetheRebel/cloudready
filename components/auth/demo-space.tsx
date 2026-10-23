@@ -82,10 +82,18 @@ export function DemoSpace() {
             account. This sample answer is not saved to learning progress.
           </p>
           <div className="mt-8 grid items-start gap-6 xl:grid-cols-[1.5fr_1fr]">
-            <SampleQuestion />
+            <div id="sample-question" className="scroll-mt-6">
+              <SampleQuestion />
+            </div>
             <div className="space-y-5">
               <Card>
                 <h2 className="text-lg font-semibold">Your demo is ready</h2>
+                <Link
+                  href="/dashboard"
+                  className="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-primary underline underline-offset-4"
+                >
+                  Open your dashboard
+                </Link>
                 <p className="mt-3 text-sm leading-7 text-muted-foreground">
                   {data.profile.onboardingComplete
                     ? `Your study preferences are saved: ${data.profile.preferences.minutesPerSession} minutes per session across ${data.profile.preferences.studyDays.length} days each week.`

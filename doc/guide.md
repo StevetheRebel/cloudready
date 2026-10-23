@@ -32,7 +32,7 @@ Preferences → Diagnostic → Learning gaps → Concept review → Fresh practi
 - [x] Add diagnostic, account, and demo entry actions.
 - [x] Label product-preview figures as sample data.
 
-Current entry behaviour: demo actions open `/demo`, account actions open the demo sign-up/sign-in routes, and diagnostic actions explain that the full diagnostic is not yet available. The home page also retains its interactive on-page sample.
+Current entry behaviour: demo actions open `/onboarding` for incomplete profiles or saved drafts, and `/dashboard` for completed profiles, account actions open the demo sign-up/sign-in routes, and diagnostic actions explain that the full diagnostic is not yet available. The home page also retains its interactive on-page sample.
 
 ### 3. Account entry — `/sign-up`, `/sign-in`
 
@@ -49,15 +49,19 @@ Stage 3 demo scope is complete. No real accounts, authentication sessions, or em
 - [x] Capture learning background, explanation style, availability, timezone, and difficult topics.
 - [x] Validate dates and persist preferences, with resumable local drafts.
 - [x] Provide completion states that save preferences and explain the pending destinations.
-- [ ] Connect completion to the real diagnostic or dashboard routes when stages 5–6 exist.
+- [x] Connect completion to the dashboard route.
+- [ ] Connect diagnostic completion to assessment setup when stage 6 exists.
 
-Onboarding is implemented for the local demo. New demo entry goes through setup, existing drafts resume, and completed learners can edit preferences. Both final actions currently save preferences and show an availability explanation with a link to `/demo`. No diagnostic or dashboard route is invented. See `doc/onboarding.md`.
+Onboarding is implemented for the local demo. New demo entry goes through setup, existing drafts resume, and completed learners can edit preferences. Go to dashboard saves preferences and opens `/dashboard`. The diagnostic action saves preferences and explains that assessment setup is pending, with a dashboard link. A draft-cleanup failure is reported before navigation. See `doc/onboarding.md`.
 
 ### 5. Initial dashboard — `/dashboard`
 
-- [ ] Show the new learner's empty state and diagnostic action.
-- [ ] Support continuing an unfinished session.
-- [ ] Use actual learner records rather than fabricated progress.
+- [x] Show the new learner's empty state and diagnostic availability action.
+- [x] Display unfinished-session details without replacing saved answers.
+- [ ] Connect unfinished-session continuation after the assessment runner exists.
+- [x] Use actual learner records rather than fabricated progress.
+
+The initial dashboard UI is implemented. Topic metrics, revision priorities, weekly activity, and countdowns derive from saved records. Full diagnostic, practice, and revision actions remain pending. See `doc/dashboard.md`.
 
 ### 6. Diagnostic setup — `/assessment/start`
 

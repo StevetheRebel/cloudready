@@ -194,6 +194,10 @@ export function OnboardingWizard() {
       }
       setValues(valuesFromProfile(result.data.profile));
       setDraftWarning(!result.draftCleared);
+      if (destination === "dashboard" && result.draftCleared) {
+        router.push("/dashboard");
+        return;
+      }
       setFinished(destination);
     } catch {
       setSaveError(
@@ -261,13 +265,12 @@ export function OnboardingWizard() {
               <h2 className="font-semibold">
                 {finished === "diagnostic"
                   ? "Your diagnostic is the next learning step"
-                  : "Your dashboard will bring your plan together"}
+                  : "Your dashboard is ready"}
               </h2>
               <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                The full{" "}
-                {finished === "diagnostic" ? "diagnostic" : "dashboard"} isn’t
-                available yet. Your preferences are ready for it. For now, try
-                the demo sample without adding invented scores to your progress.
+                {finished === "diagnostic"
+                  ? "The full diagnostic is coming soon. Your preferences are saved, and your dashboard is ready to explore."
+                  : "Your preferences are saved. Open your dashboard to see your study routine and available next steps."}
               </p>
             </Card>
             {draftWarning ? (
@@ -277,8 +280,8 @@ export function OnboardingWizard() {
               </p>
             ) : null}
             <div className="mt-7 flex flex-wrap gap-3">
-              <Link href="/demo" className={buttonVariants()}>
-                Continue to demo
+              <Link href="/dashboard" className={buttonVariants()}>
+                Open dashboard
                 <ArrowRight aria-hidden="true" size={16} />
               </Link>
               <Button
@@ -723,9 +726,9 @@ export function OnboardingWizard() {
                         ) : null}
                       </fieldset>
                       <div className="rounded-xl bg-muted p-4 text-sm leading-7 text-muted-foreground">
-                        The full diagnostic and dashboard aren’t available yet.
-                        Both actions below save your preferences; you can then
-                        continue with the demo sample.
+                        Your dashboard is ready. The full diagnostic is coming
+                        soon. Both actions below save your preferences. Go to
+                        dashboard opens your study overview.
                       </div>
                     </>
                   ) : null}

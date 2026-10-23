@@ -34,7 +34,7 @@ export function DemoEntry({
       router.push(
         !data.profile.onboardingComplete || draft.status === "ready"
           ? "/onboarding"
-          : "/demo",
+          : "/dashboard",
       );
     } catch {
       setError(

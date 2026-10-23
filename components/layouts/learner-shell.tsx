@@ -26,7 +26,7 @@ export function LearnerShell({
   children,
   displayName,
   isDemo = false,
-  availableRoutes = [],
+  availableRoutes = ["/dashboard"],
 }: {
   children: ReactNode;
   displayName: string;
@@ -114,7 +114,7 @@ export function LearnerShell({
               </Link>
             ) : (
               <span
-                title="Settings will be available in stage 13"
+                title="Settings are coming soon"
                 aria-label="Settings unavailable"
                 aria-disabled="true"
                 className="p-3 text-muted-foreground opacity-50"

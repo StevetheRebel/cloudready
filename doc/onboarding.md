@@ -30,9 +30,9 @@ Completion reads the latest learner records, changes only profile preferences/di
 
 ## Entry and completion
 
-Home and account demo-entry actions send incomplete learners or learners with drafts to `/onboarding`. Completed learners without drafts open `/demo`, where Edit study preferences remains available. Direct visits to `/onboarding` can also create/resume a local demo profile.
+Home and account demo-entry actions send incomplete learners or learners with drafts to `/onboarding`. Completed learners without drafts open `/dashboard`, where Edit study preferences remains available. Direct visits to `/onboarding` can also create/resume a local demo profile.
 
-The final Take the diagnostic and Go to dashboard actions both save preferences, then show a clear completion screen explaining that their destination is not yet implemented. That screen offers Continue to demo and Edit preferences. The form explains this before submission. Connect these actions to actual routes when guide stages 5–6 are built.
+Both final actions save preferences. Go to dashboard opens `/dashboard` after successful draft cleanup. Take the diagnostic shows the pending-diagnostic explanation with Open dashboard and Edit preferences actions. A draft-cleanup failure is reported on the completion screen before navigation. Diagnostic setup remains stage 6.
 
 ## Verification
 
@@ -42,4 +42,4 @@ Browser interaction and visual verification remain unavailable following the pri
 
 ## Next
 
-Build the initial dashboard using the saved profile and genuine empty learning records, then implement diagnostic start/resume. Real account persistence remains deferred.
+The initial dashboard is implemented; see `doc/dashboard.md`. Next, implement diagnostic start/resume. Real account persistence remains deferred.
