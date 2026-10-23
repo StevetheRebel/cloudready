@@ -192,6 +192,14 @@ export function Dashboard() {
                 Explore the demo sample
               </Link>
             ) : null}
+            {summary.latestCompletedDiagnostic ? (
+              <Link
+                href={`/assessment/${encodeURIComponent(summary.latestCompletedDiagnostic.id)}/results`}
+                className={buttonVariants({ variant: "secondary" })}
+              >
+                View latest diagnostic results
+              </Link>
+            ) : null}
           </div>
         </Card>
         <Card>

@@ -44,7 +44,7 @@ Loading, blocked/unreadable storage, failed saves, missing sessions, unavailable
 
 The shared learner-data hook refreshes on storage events, focus, a one-minute timer, and manual reload. There is no server or API boundary in this demo. Service operations re-read before writing, but truly simultaneous writes in separate tabs still lack transactional locking; use one active assessment tab. Site-local storage is separate between localhost and Vercel.
 
-The shared runner now also handles persisted practice sessions, optional confidence, and after-session explanations. Simpler/local-example explanations and AI-unconfigured/offline fallback states are implemented; see `doc/runner.md`. Practice setup and the dedicated detailed-results route remain future work. The current completion screen shows score/counts and saved-answer review.
+The shared runner now also handles persisted practice sessions, optional confidence, and after-session explanations. Simpler/local-example explanations and AI-unconfigured/offline fallback states are implemented; see `doc/runner.md`. The dedicated diagnostic results route is now implemented; see `doc/results.md`. Practice setup remains future work. Completed diagnostic runners link to the report, and Finish diagnostic opens it.
 
 ## Verification
 

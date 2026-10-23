@@ -2,6 +2,10 @@
 
 This guide records the agreed implementation order. Update the checkboxes as stages are completed. Build a connected learning journey before completing secondary features.
 
+## Milestone review and commits
+
+Finish a milestone, verify it, and report what is ready, what needs user validation, and what comes next. Leave that new work uncommitted for review. When the user asks to proceed to the next milestone, commit the completed previous milestone before starting new work. If it is already committed, do not create an empty commit. Push when requested.
+
 ## Project baseline
 
 - Next.js App Router, TypeScript, and Tailwind CSS v4.
@@ -85,10 +89,13 @@ Stage 7 is implemented without live AI. The shared runner supports persisted dia
 
 ### 8. Diagnostic results — `/assessment/[sessionId]/results`
 
-- [ ] Calculate score, topic breakdown, and confidence categories from responses.
-- [ ] Prioritise confident incorrect answers for revision.
-- [ ] Link learning gaps to lessons and targeted practice.
-- [ ] Provide expandable answer review.
+- [x] Calculate score, topic breakdown, and confidence categories from responses.
+- [x] Prioritise confident incorrect answers for revision.
+- [x] Link learning gaps to answer review and Microsoft Learn references available now.
+- [ ] Connect learning gaps to concept lessons and targeted practice when stages 9–10 exist.
+- [x] Provide expandable answer review.
+
+The detailed diagnostic results page is implemented, including missing/incomplete/replaced-session states and preserved historical scoring. Lessons and targeted practice are clearly labelled pending. See `doc/results.md`. Next: concept learning, starting with `/learn/[conceptSlug]`, then `/learn`.
 
 ### 9. Concept learning — `/learn/[conceptSlug]`, then `/learn`
 

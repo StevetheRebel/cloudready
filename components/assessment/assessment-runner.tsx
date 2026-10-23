@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { LearnerShell } from "@/components/layouts/learner-shell";
@@ -23,6 +24,7 @@ import {
 import { QuestionPanel } from "@/components/assessment/question-panel";
 
 export function AssessmentRunner({ sessionId }: { sessionId: string }) {
+  const router = useRouter();
   const { state, refresh, replaceData } = useLearnerData();
   const [reviewId, setReviewId] = useState<string | null>(null);
   const [saveError, setSaveError] = useState("");
@@ -157,6 +159,15 @@ export function AssessmentRunner({ sessionId }: { sessionId: string }) {
               official exam result.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
+              {session.kind === "diagnostic" ? (
+                <Link
+                  href={`/assessment/${encodeURIComponent(session.id)}/results`}
+                  className={buttonVariants()}
+                >
+                  View detailed results
+                  <ArrowRight aria-hidden="true" size={16} />
+                </Link>
+              ) : null}
               <Link href="/dashboard" className={buttonVariants()}>
                 Open dashboard
                 <ArrowRight aria-hidden="true" size={16} />
@@ -169,8 +180,9 @@ export function AssessmentRunner({ sessionId }: { sessionId: string }) {
               </Button>
             </div>
             <p className="mt-4 text-xs leading-6 text-muted-foreground">
-              Detailed session results and lesson links will follow in the next
-              build stage.
+              {session.kind === "diagnostic"
+                ? "Detailed results show your topic breakdown, confidence patterns, and learning priorities. Concept lessons are coming next."
+                : "Dedicated practice results and lesson links will follow in a later build stage."}
             </p>
           </Card>
         ) : question ? (
@@ -212,6 +224,16 @@ export function AssessmentRunner({ sessionId }: { sessionId: string }) {
               sessionLabel={sessionLabel}
               onNext={() => {
                 setSaveError("");
+                if (
+                  session.kind === "diagnostic" &&
+                  session.status === "completed" &&
+                  index === session.questionIds.length - 1
+                ) {
+                  router.push(
+                    `/assessment/${encodeURIComponent(session.id)}/results`,
+                  );
+                  return;
+                }
                 setReviewId(
                   index + 1 < session.responses.length
                     ? session.questionIds[index + 1]

@@ -26,4 +26,4 @@ Seven additional tests cover format support/fallbacks, preference mapping, AI-un
 
 Browser visual and interaction checks remain unavailable because of the earlier browser access-policy block. Before release, review format-button keyboard access, announcement/focus behaviour, offline messages, after-session feedback, refresh/resume, and small-screen layouts. No browser check is claimed by the domain or route tests.
 
-Next: stage 8, the dedicated detailed-results page with topic and confidence breakdowns, revision priorities, and expandable answer review. Lessons and targeted-practice destinations must only become active when implemented.
+Stage 8 detailed diagnostic results are implemented; see `doc/results.md`. Finish diagnostic opens that report. Practice keeps its completion summary until practice results are built. Next: concept lessons and the learning library. Lessons and targeted-practice destinations must only become active when implemented.

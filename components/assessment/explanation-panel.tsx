@@ -8,12 +8,22 @@ import {
 } from "@/lib/cloudready/explanations";
 import { Button } from "@/components/ui/button";
 
+const networkListeners = new Set<() => void>();
+function notifyNetwork() {
+  for (const listener of networkListeners) listener();
+}
 function subscribeNetwork(changed: () => void) {
-  window.addEventListener("online", changed);
-  window.addEventListener("offline", changed);
+  networkListeners.add(changed);
+  if (networkListeners.size === 1) {
+    window.addEventListener("online", notifyNetwork);
+    window.addEventListener("offline", notifyNetwork);
+  }
   return () => {
-    window.removeEventListener("online", changed);
-    window.removeEventListener("offline", changed);
+    networkListeners.delete(changed);
+    if (networkListeners.size === 0) {
+      window.removeEventListener("online", notifyNetwork);
+      window.removeEventListener("offline", notifyNetwork);
+    }
   };
 }
 const readNetwork = () => navigator.onLine;

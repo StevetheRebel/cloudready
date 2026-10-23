@@ -37,4 +37,4 @@ Browser interaction and visual verification remain unavailable following the ear
 
 ## Next integration
 
-Diagnostic start/resume is connected; see `doc/assessment.md`. Saved practice sessions also use the shared runner; new practice setup remains pending. Next, build detailed results.
+Diagnostic start/resume is connected; see `doc/assessment.md`. Saved practice sessions also use the shared runner; new practice setup remains pending. The dashboard now links to the latest completed diagnostic report, selected by completion time; see `doc/results.md`. Next, build concept lessons.

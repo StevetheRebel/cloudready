@@ -6,7 +6,7 @@ Unofficial study tool. Not affiliated with or endorsed by Microsoft.
 
 ## Current stage
 
-Stages 1–7 are implemented for the local demo: home, simulated account forms, onboarding, dashboard, and a 12-question untimed diagnostic with confidence, per-option explanations, simpler explanations, fictional local examples, saved progress, resume, and confirmed restart. The runner is prepared for practice sessions. AI help uses an honest source-checked fallback. Detailed results, practice, lessons, full revision, and real authentication remain pending.
+Stages 1–8 UI are implemented for the local demo: home, simulated account forms, onboarding, dashboard, and a 12-question untimed diagnostic with confidence, per-option explanations, simpler explanations, fictional local examples, saved progress, resume, and confirmed restart. The runner is prepared for practice sessions. AI help uses an honest source-checked fallback. Detailed diagnostic results include topic/confidence breakdowns, learning priorities, and expandable answer review. Practice, lessons, full revision, and real authentication remain pending.
 
 ## Local setup
 
@@ -27,6 +27,7 @@ Open the Local URL printed by Next.js. It defaults to http://localhost:3000, cho
 - `/dashboard`: local learner overview with topic metrics, revision priorities, weekly activity, saved-session details, and honest empty states.
 - `/assessment/start`: diagnostic introduction and start/resume/confirmed restart.
 - `/assessment/[sessionId]`: shared session runner and completion summary with saved answer review.
+- `/assessment/[sessionId]/results`: detailed report for one completed diagnostic, with historical scores and answer review.
 - `/privacy`, `/terms`: initial information accurately describing the current demo. Review before real account access opens.
 - `/foundation`: component and layout preview with themes, validation, notifications, and locally saved demo preferences. Excluded from search indexing; remove or restrict before launch.
 
@@ -55,5 +56,6 @@ The foundation and learner demo store only validated demo records in this browse
 - [Dashboard metrics, available actions, and verification limits](doc/dashboard.md)
 - [Diagnostic content, sessions, restart semantics, and verification](doc/assessment.md)
 - [Shared runner, explanation formats, and AI fallback behaviour](doc/runner.md)
+- [Diagnostic results, scoring scope, content limits, and validation](doc/results.md)
 
 Neon, Drizzle, and Better Auth will be integrated when real accounts are built. AI explanations will use server-side credentials and reviewed fallback content; no live prompts are implemented in this stage.

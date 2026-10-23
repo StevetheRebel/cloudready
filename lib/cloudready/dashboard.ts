@@ -142,6 +142,18 @@ export function dashboardSummary(data: LearnerData, now = new Date()) {
     .sort((a, b) => Date.parse(b.at) - Date.parse(a.at))
     .slice(0, 5);
   const examDate = data.profile.preferences.examDate;
+  const latestCompletedDiagnostic =
+    data.sessions
+      .filter(
+        (session) =>
+          session.kind === "diagnostic" &&
+          session.status === "completed" &&
+          session.completedAt &&
+          throughNow(session.completedAt),
+      )
+      .sort(
+        (a, b) => Date.parse(b.completedAt!) - Date.parse(a.completedAt!),
+      )[0] ?? null;
   const examDays = examDate
     ? Math.round(
         (Date.parse(`${examDate}T00:00:00Z`) -
@@ -157,13 +169,8 @@ export function dashboardSummary(data: LearnerData, now = new Date()) {
     totalResponses: responses.length,
     topicsAttempted: new Set(responses.map((response) => response.topicId))
       .size,
-    hasDiagnostic: data.sessions.some(
-      (session) =>
-        session.kind === "diagnostic" &&
-        session.status === "completed" &&
-        session.completedAt &&
-        throughNow(session.completedAt),
-    ),
+    hasDiagnostic: Boolean(latestCompletedDiagnostic),
+    latestCompletedDiagnostic,
     dueCount: dueRevision.length,
     priorities,
     topics: topicSummaries,
