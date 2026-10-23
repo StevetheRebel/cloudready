@@ -49,8 +49,8 @@ function fixture() {
 }
 
 test("diagnostic content is valid, original, balanced and sourced to Microsoft Learn", () => {
-  assert.equal(questions.length, 12);
-  assert.equal(new Set(questions.map((question) => question.id)).size, 12);
+  assert.equal(questions.length, 30);
+  assert.equal(new Set(questions.map((question) => question.id)).size, 30);
   for (const question of questions) {
     assert.ok(questionSchema.safeParse(question).success);
     assert.equal(new URL(question.source.url).hostname, "learn.microsoft.com");

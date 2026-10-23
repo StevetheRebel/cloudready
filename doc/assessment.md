@@ -26,7 +26,7 @@ Sources checked 23 October 2026:
 - [Azure Policy](https://learn.microsoft.com/en-us/training/modules/describe-features-tools-azure-for-governance-compliance/3-describe-purpose-azure-policy)
 - [Resource locks](https://learn.microsoft.com/en-us/training/modules/describe-features-tools-azure-for-governance-compliance/4-describe-purpose-resource-locks)
 
-This is a small introductory diagnostic bank, not complete AZ-900 coverage. Expanding to the guide's 30 questions and ten per topic remains pending before targeted fresh practice.
+This is a small introductory diagnostic bank, not complete AZ-900 coverage. The combined bank has now expanded to 30 questions, ten per topic; the diagnostic still selects its original 12. See `doc/practice.md`.
 
 ## Persistence and correctness
 
@@ -44,7 +44,7 @@ Loading, blocked/unreadable storage, failed saves, missing sessions, unavailable
 
 The shared learner-data hook refreshes on storage events, focus, a one-minute timer, and manual reload. There is no server or API boundary in this demo. Service operations re-read before writing, but truly simultaneous writes in separate tabs still lack transactional locking; use one active assessment tab. Site-local storage is separate between localhost and Vercel.
 
-The shared runner now also handles persisted practice sessions, optional confidence, and after-session explanations. Simpler/local-example explanations and AI-unconfigured/offline fallback states are implemented; see `doc/runner.md`. The dedicated diagnostic results route is now implemented; see `doc/results.md`. Practice setup remains future work. Completed diagnostic runners link to the report, and Finish diagnostic opens it.
+The shared runner now also handles persisted practice sessions, optional confidence, and after-session explanations. Simpler/local-example explanations and AI-unconfigured/offline fallback states are implemented; see `doc/runner.md`. The dedicated diagnostic results route is now implemented; see `doc/results.md`. Practice setup and dedicated results are now implemented; see `doc/practice.md`. Completed diagnostic runners link to the report, and Finish diagnostic opens it.
 
 ## Verification
 

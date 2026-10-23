@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import type { dashboardSummary } from "@/lib/cloudready/dashboard";
 
@@ -40,11 +41,17 @@ export function TopicSummaryCard({ topic }: { topic: Topic }) {
             : "concepts need"}{" "}
           revision from the latest answers.
         </p>
-        <Button variant="secondary" className="mt-4 w-full" disabled>
+        <Link
+          href={`/practice?topic=${topic.id}`}
+          className={buttonVariants({
+            variant: "secondary",
+            className: "mt-4 w-full",
+          })}
+        >
           Practise this topic
-        </Button>
+        </Link>
         <p className="mt-2 text-xs text-muted-foreground">
-          Topic practice is coming soon.
+          Choose question count, confidence, and feedback settings.
         </p>
       </div>
     </Card>

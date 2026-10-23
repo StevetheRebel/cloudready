@@ -22,7 +22,7 @@ Both mutations re-read the latest repository, validate the concept ID, and save 
 
 Search matches all entered terms against titles, summaries, and key terms, ignoring case and extra whitespace. Filters combine topic group with All, Reviewed, Not reviewed, or Needs attention status. Needs attention means an existing revision item or a flagged latest response; it is independent of Reviewed. No-match results offer Clear filters, and the reviewed count is shown without mastery claims.
 
-Learner navigation now enables Learn. Diagnostic result priorities and dashboard revision priorities link to available matching lessons. Unknown historical concepts do not produce invented links. Targeted-practice controls remain labelled pending; their setup is the next milestone. Missing lesson slugs use a lesson-specific not-found page with a library link.
+Learner navigation now enables Learn. Diagnostic result priorities and dashboard revision priorities link to available matching lessons. Unknown historical concepts do not produce invented links. Targeted-practice controls now open the matching concept focus; see `doc/practice.md`. Missing lesson slugs use a lesson-specific not-found page with a library link.
 
 ## Verification and validation
 
@@ -32,6 +32,6 @@ Browser interaction and visual checks remain blocked by the earlier browser acce
 
 ## Delivery and next step
 
-The prior results milestone was committed locally as `4c266d8` when this step began. The new learning milestone stays uncommitted for review. Push is separate and only performed when requested.
+The prior results milestone was committed locally as `4c266d8` when this step began. The learning milestone was committed locally as `473900d` when the user proceeded. Push is separate and only performed when requested.
 
-Next: targeted practice setup and sessions, including topic/mode selection, question-pool limits, fresh-question preference, confidence/explanation settings, and meaningful first-attempt/retry results. Expand and source-check the question bank before claiming fresh practice coverage.
+Targeted practice is now implemented with a 30-question source-checked bank. Next: progress and dashboard completion.

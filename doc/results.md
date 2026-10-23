@@ -23,7 +23,7 @@ The v1 records do not snapshot question text or the historical correct-option ID
 
 ## Available actions and states
 
-The report offers answer review, Microsoft Learn references, and the dashboard. Concept lessons now open from learning priorities and the library. Targeted practice remains visibly unavailable until its routes exist.
+The report offers answer review, Microsoft Learn references, and the dashboard. Concept lessons now open from learning priorities and the library. Targeted practice is now available, including concept-focus links and practice on current recorded weak areas.
 
 Loading, unreadable/blocked storage, retry/data controls, missing session, in-progress/resume, replaced-session, and non-diagnostic-session states are provided. An unfinished diagnostic is not shown as a completed report. A practice-session link offers the shared session screen. Records are local to the browser and site, so a URL opened on another device may have no session.
 
@@ -41,4 +41,4 @@ No credentials or product decisions were needed for this milestone. It was commi
 
 ## Next
 
-Concept lessons and the learning library are now implemented and connected; see `doc/learning.md`. Targeted practice is next.
+Concept lessons and the learning library are now implemented and connected; see `doc/learning.md`. Targeted practice is now connected; progress and dashboard completion are next.

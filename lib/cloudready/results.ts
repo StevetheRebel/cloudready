@@ -33,6 +33,16 @@ export function diagnosticResults(
   const session = sessionSchema.parse(input);
   if (session.kind !== "diagnostic" || session.status !== "completed")
     throw new Error("Results require a completed diagnostic.");
+  return sessionResults(session, pool);
+}
+
+export function sessionResults(
+  input: AssessmentSession,
+  pool: readonly Question[] = questions,
+) {
+  const session = sessionSchema.parse(input);
+  if (session.status !== "completed")
+    throw new Error("Results require a completed session.");
   const questionMap = new Map(pool.map((question) => [question.id, question]));
   const responseMap = new Map(
     session.responses.map((response) => [response.questionId, response]),

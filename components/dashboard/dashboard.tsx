@@ -157,7 +157,7 @@ export function Dashboard() {
                 ? "An unfinished session is saved in this browser. Your submitted answers are kept when you resume."
                 : !summary.hasDiagnostic
                   ? "Explore twelve untimed questions across the three topic groups. Choose an answer and a confidence rating, then learn from the explanation."
-                  : "Your latest answers and confidence ratings help prioritise revision. Open a concept lesson to revisit the reasoning; targeted practice and the full revision queue are coming later."}
+                  : "Your latest answers and confidence ratings help prioritise revision. Open a concept lesson to revisit the reasoning; targeted practice is available, and the full revision queue is coming later."}
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             {needsSetup ? (
@@ -190,6 +190,14 @@ export function Dashboard() {
                 className={buttonVariants({ variant: "secondary" })}
               >
                 Explore the demo sample
+              </Link>
+            ) : null}
+            {!needsSetup ? (
+              <Link
+                href="/practice"
+                className={buttonVariants({ variant: "secondary" })}
+              >
+                Set up practice
               </Link>
             ) : null}
             {summary.latestCompletedDiagnostic ? (
@@ -300,8 +308,8 @@ export function Dashboard() {
             <SessionAction session={summary.unfinished} />
           </div>
           <p className="mt-4 text-xs leading-6 text-muted-foreground">
-            Submitted answers are saved. Creating new practice sessions will be
-            available in a later stage.
+            Submitted answers are saved. Resume your session or open practice
+            setup to choose a new focus.
           </p>
         </Card>
       ) : null}

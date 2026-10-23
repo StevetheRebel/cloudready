@@ -89,12 +89,30 @@ export const sessionSchema = z
     explanationTiming: z.enum(["after-answer", "after-session"]),
     confidenceEnabled: z.boolean(),
     questionIds: z.array(z.string().min(1)).min(1),
+    practiceFocus: z
+      .object({
+        topicId: topicIdSchema.nullable(),
+        conceptId: z.string().min(1).nullable(),
+      })
+      .optional(),
+    freshQuestionIds: z.array(z.string().min(1)).optional(),
     responses: z.array(responseSchema),
     startedAt: timestamp,
     completedAt: timestamp.nullable(),
   })
   .superRefine((session, ctx) => {
     const uniqueQuestions = new Set(session.questionIds);
+    if (
+      session.freshQuestionIds &&
+      (new Set(session.freshQuestionIds).size !==
+        session.freshQuestionIds.length ||
+        session.freshQuestionIds.some((id) => !uniqueQuestions.has(id)))
+    )
+      ctx.addIssue({
+        code: "custom",
+        message:
+          "Fresh question identifiers must be unique and belong to the session",
+      });
     const uniqueResponses = new Set(
       session.responses.map((response) => response.questionId),
     );

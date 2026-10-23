@@ -341,6 +341,16 @@ export function DiagnosticResults({ sessionId }: { sessionId: string }) {
                         Study this concept
                       </Link>
                     ) : null}
+                    {concepts.find(
+                      (concept) => concept.id === item.conceptId,
+                    ) ? (
+                      <Link
+                        href={`/practice?topic=${item.response.topicId}&concept=${item.conceptId}`}
+                        className={buttonVariants({ variant: "secondary" })}
+                      >
+                        Practise this concept
+                      </Link>
+                    ) : null}
                   </div>
                 </Card>
               </li>
@@ -374,14 +384,17 @@ export function DiagnosticResults({ sessionId }: { sessionId: string }) {
           >
             Open concept lessons
           </Link>
-          <Button variant="secondary" disabled>
-            Targeted practice · Coming later
-          </Button>
+          <Link
+            href="/practice?mode=weak-areas"
+            className={buttonVariants({ variant: "secondary" })}
+          >
+            Practise recorded weak areas
+          </Link>
           {dashboard}
         </div>
         <p className="mt-3 text-xs leading-6 text-muted-foreground">
-          Targeted practice is not available yet. Reviewing an answer here or
-          marking a lesson reviewed does not mark a concept as mastered.
+          Practice uses your current saved learning history. Reviewing an answer
+          here or marking a lesson reviewed does not mark a concept as mastered.
         </p>
       </Card>
       <section

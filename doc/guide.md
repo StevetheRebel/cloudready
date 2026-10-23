@@ -63,7 +63,7 @@ Onboarding is implemented for the local demo. New demo entry goes through setup,
 - [x] Show the new learner's empty state and diagnostic availability action.
 - [x] Display unfinished-session details without replacing saved answers.
 - [x] Connect unfinished diagnostic continuation to the initial runner.
-- [x] Connect saved practice-session continuation to the shared runner (practice creation remains pending).
+- [x] Connect saved practice-session continuation to the shared runner.
 - [x] Use actual learner records rather than fabricated progress.
 
 The initial dashboard UI is implemented. Topic metrics, revision priorities, weekly activity, and countdowns derive from saved records. Diagnostic start/resume is connected. Practice and full revision actions remain pending. See `doc/dashboard.md`.
@@ -85,17 +85,17 @@ Stage 6 includes an initial diagnostic runner so start/resume leads to a working
 - [x] Save progress, support refresh/resume, and handle unknown sessions.
 - [x] Design the runner for reuse by practice sessions, including confidence-off and after-session explanations.
 
-Stage 7 is implemented without live AI. The shared runner supports persisted diagnostic and practice sessions; practice creation remains stage 10. See `doc/runner.md`.
+Stage 7 is implemented without live AI. The shared runner supports persisted diagnostic and practice sessions; practice creation and dedicated routes are implemented in stage 10. See `doc/runner.md`.
 
 ### 8. Diagnostic results — `/assessment/[sessionId]/results`
 
 - [x] Calculate score, topic breakdown, and confidence categories from responses.
 - [x] Prioritise confident incorrect answers for revision.
 - [x] Link learning gaps to answer review and Microsoft Learn references available now.
-- [ ] Connect learning gaps to concept lessons and targeted practice when stages 9–10 exist.
+- [x] Connect learning gaps to concept lessons and targeted practice when stages 9–10 exist.
 - [x] Provide expandable answer review.
 
-The detailed diagnostic results page is implemented, including missing/incomplete/replaced-session states and preserved historical scoring. Learning gaps now link to concept lessons; targeted practice is still pending. See `doc/results.md`.
+The detailed diagnostic results page is implemented, including missing/incomplete/replaced-session states and preserved historical scoring. Learning gaps now link to concept lessons and targeted practice. See `doc/results.md`.
 
 ### 9. Concept learning — `/learn/[conceptSlug]`, then `/learn`
 
@@ -104,16 +104,18 @@ The detailed diagnostic results page is implemented, including missing/incomplet
 - [x] Provide searchable, filterable concept cards.
 - [x] Handle missing lessons and distinguish reviewed status from mastery.
 
-Stage 9 provides twelve source-checked introductory lessons and the filtered library. Recap checks are labelled as repeated diagnostic material and do not change saved scores. See `doc/learning.md`. Next: targeted practice. Checklist progress is 40/65 (61.5%); see `doc/progress.md`.
+Stage 9 provides twelve source-checked introductory lessons and the filtered library. Recap checks are labelled as repeated diagnostic material and do not change saved scores. See `doc/learning.md`. Practice is now connected. Checklist progress is 45/65 (69.2%); see `doc/progress.md`.
 
 ### 10. Targeted practice
 
 Routes: `/practice`, `/practice/[sessionId]`, `/practice/[sessionId]/results`.
 
-- [ ] Implement mode, topic, question-count, explanation-timing, and confidence preferences.
-- [ ] Enforce the eligible question-pool size and prefer fresh questions.
-- [ ] Reuse the assessment runner.
-- [ ] Show session results and supported first-attempt/retry comparisons.
+- [x] Implement mode, topic, question-count, explanation-timing, and confidence preferences.
+- [x] Enforce the eligible question-pool size and prefer fresh questions.
+- [x] Reuse the assessment runner.
+- [x] Show session results and supported first-attempt/retry comparisons.
+
+Stage 10 is implemented with a 30-question source-checked bank, fresh-first selection, saved practice settings, resume/confirmed replacement, and contextual first-practice/retry comparisons. See `doc/practice.md`. Next: progress and dashboard completion.
 
 ### 11. Progress and dashboard completion — `/progress`, `/dashboard`
 

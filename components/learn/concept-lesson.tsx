@@ -255,12 +255,19 @@ export function ConceptLesson({ conceptId }: { conceptId: string }) {
           <Card>
             <h2 className="font-semibold">After the lesson</h2>
             <p className="mt-3 text-sm leading-7 text-muted-foreground">
-              Fresh targeted practice is the next build milestone. The recap
-              check is not evidence of improvement on an unseen question.
+              Targeted practice selects questions without saved answers first.
+              The recap check is not evidence of improvement on an unseen
+              question.
             </p>
-            <Button variant="secondary" className="mt-4 w-full" disabled>
-              Targeted practice · Coming next
-            </Button>
+            <Link
+              href={`/practice?topic=${concept.topicId}&concept=${concept.id}`}
+              className={buttonVariants({
+                variant: "secondary",
+                className: "mt-4 w-full",
+              })}
+            >
+              Practise this concept
+            </Link>
             <Link
               href="/dashboard"
               className="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-primary underline underline-offset-4"

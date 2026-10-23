@@ -23,7 +23,13 @@ import {
 } from "@/lib/cloudready/assessment-flow";
 import { QuestionPanel } from "@/components/assessment/question-panel";
 
-export function AssessmentRunner({ sessionId }: { sessionId: string }) {
+export function AssessmentRunner({
+  sessionId,
+  expectedKind,
+}: {
+  sessionId: string;
+  expectedKind?: "diagnostic" | "practice";
+}) {
   const router = useRouter();
   const { state, refresh, replaceData } = useLearnerData();
   const [reviewId, setReviewId] = useState<string | null>(null);
@@ -58,11 +64,11 @@ export function AssessmentRunner({ sessionId }: { sessionId: string }) {
   const session = state.data.sessions.find((item) => item.id === sessionId);
   const back = (
     <Link
-      href={session?.kind === "practice" ? "/dashboard" : "/assessment/start"}
+      href={session?.kind === "practice" ? "/practice" : "/assessment/start"}
       className={buttonVariants({ variant: "secondary" })}
     >
       {session?.kind === "practice"
-        ? "Back to dashboard"
+        ? "Open practice setup"
         : "Open diagnostic setup"}
     </Link>
   );
@@ -73,6 +79,23 @@ export function AssessmentRunner({ sessionId }: { sessionId: string }) {
           title="Study session not found in this browser"
           description="This link may belong to another browser or site, or its local data may have been cleared. You can open setup to start or resume an available diagnostic."
           action={back}
+        />
+      </LearnerShell>
+    );
+  if (expectedKind && session.kind !== expectedKind)
+    return (
+      <LearnerShell displayName={name} isDemo>
+        <EmptyState
+          title="This link belongs to a different session type"
+          description="Your saved session is kept. Open its matching study screen."
+          action={
+            <Link
+              href={`/${session.kind === "diagnostic" ? "assessment" : "practice"}/${encodeURIComponent(session.id)}`}
+              className={buttonVariants()}
+            >
+              Open saved session
+            </Link>
+          }
         />
       </LearnerShell>
     );
@@ -159,9 +182,9 @@ export function AssessmentRunner({ sessionId }: { sessionId: string }) {
               official exam result.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              {session.kind === "diagnostic" ? (
+              {session.status === "completed" ? (
                 <Link
-                  href={`/assessment/${encodeURIComponent(session.id)}/results`}
+                  href={`/${session.kind === "diagnostic" ? "assessment" : "practice"}/${encodeURIComponent(session.id)}/results`}
                   className={buttonVariants()}
                 >
                   View detailed results
@@ -181,8 +204,8 @@ export function AssessmentRunner({ sessionId }: { sessionId: string }) {
             </div>
             <p className="mt-4 text-xs leading-6 text-muted-foreground">
               {session.kind === "diagnostic"
-                ? "Detailed results show your topic breakdown, confidence patterns, and learning priorities. Concept lessons are coming next."
-                : "Dedicated practice results and lesson links will follow in a later build stage."}
+                ? "Detailed results show your topic breakdown, confidence patterns, and learning priorities. Concept lessons are available now."
+                : "Practice results distinguish first practice, retries, and supported comparisons on matching questions."}
             </p>
           </Card>
         ) : question ? (
@@ -198,7 +221,7 @@ export function AssessmentRunner({ sessionId }: { sessionId: string }) {
                 className="mt-3 h-2 w-full accent-primary"
                 value={session.responses.length}
                 max={session.questionIds.length}
-                aria-label="Saved diagnostic answers"
+                aria-label="Saved session answers"
               />
             </div>
             {saveError ? (
@@ -225,12 +248,11 @@ export function AssessmentRunner({ sessionId }: { sessionId: string }) {
               onNext={() => {
                 setSaveError("");
                 if (
-                  session.kind === "diagnostic" &&
                   session.status === "completed" &&
                   index === session.questionIds.length - 1
                 ) {
                   router.push(
-                    `/assessment/${encodeURIComponent(session.id)}/results`,
+                    `/${session.kind === "diagnostic" ? "assessment" : "practice"}/${encodeURIComponent(session.id)}/results`,
                   );
                   return;
                 }

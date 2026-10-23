@@ -6,7 +6,7 @@ Unofficial study tool. Not affiliated with or endorsed by Microsoft.
 
 ## Current stage
 
-Stages 1–9 UI are implemented for the local demo: home, simulated account forms, onboarding, dashboard, and a 12-question untimed diagnostic with confidence, per-option explanations, simpler explanations, fictional local examples, saved progress, resume, and confirmed restart. The runner is prepared for practice sessions. AI help uses an honest source-checked fallback. Detailed diagnostic results include topic/confidence breakdowns, learning priorities, and expandable answer review. Twelve introductory concept lessons and a searchable/filterable learning library are available, with saved reviewed/revision actions. Targeted practice, full revision, and real authentication remain pending.
+Stages 1–10 UI are implemented for the local demo: home, simulated account forms, onboarding, dashboard, and a 12-question untimed diagnostic with confidence, per-option explanations, simpler explanations, fictional local examples, saved progress, resume, and confirmed restart. The runner is prepared for practice sessions. AI help uses an honest source-checked fallback. Detailed diagnostic results include topic/confidence breakdowns, learning priorities, and expandable answer review. Twelve introductory concept lessons and a searchable/filterable learning library are available, with saved reviewed/revision actions. Targeted practice now supports a 30-question bank, fresh-first selection, configurable sessions, resume, and contextual results. Full progress/revision/settings and real authentication remain pending.
 
 ## Local setup
 
@@ -30,6 +30,9 @@ Open the Local URL printed by Next.js. It defaults to http://localhost:3000, cho
 - `/assessment/[sessionId]/results`: detailed report for one completed diagnostic, with historical scores and answer review.
 - `/learn`: searchable library with topic and learning-status filters.
 - `/learn/[conceptSlug]`: concept lesson, comparison, fictional local scenario, unsaved recap check, and reviewed/revision actions.
+- `/practice`: scope/settings, eligible/fresh/repeated counts, resume, and confirmed replacement.
+- `/practice/[sessionId]`: shared practice runner with saved settings.
+- `/practice/[sessionId]/results`: contextual practice results, comparisons, and saved-answer review.
 - `/privacy`, `/terms`: initial information accurately describing the current demo. Review before real account access opens.
 - `/foundation`: component and layout preview with themes, validation, notifications, and locally saved demo preferences. Excluded from search indexing; remove or restrict before launch.
 
@@ -46,7 +49,7 @@ npm run build
 
 Next.js App Router, TypeScript, Tailwind CSS v4, Lucide icons, Radix dialog primitives, next-themes, and Zod. Shared layouts and primitives live in `components/`; content, scoring, scheduling, service, and persistence modules live in `lib/cloudready/`.
 
-The foundation and learner demo store only validated demo records in this browser. Account forms use a stateless mock service: they create no account, send no email, store no entered passwords, and return no session tokens. The public fictional sample account is displayed on sign-in. Real authentication, email, database persistence, and live AI remain unimplemented. The initial 12-question diagnostic bank is checked against Microsoft Learn sources; the twelve-lesson bank supports those diagnostic concepts. The full learning journey is still being built. The sample question and labelled illustrative scores do not update learner progress.
+The foundation and learner demo store only validated demo records in this browser. Account forms use a stateless mock service: they create no account, send no email, store no entered passwords, and return no session tokens. The public fictional sample account is displayed on sign-in. Real authentication, email, database persistence, and live AI remain unimplemented. The 30-question bank, including the stable 12-question diagnostic, is checked against Microsoft Learn sources; the twelve-lesson bank supports those diagnostic concepts. The full learning journey is still being built. The sample question and labelled illustrative scores do not update learner progress.
 
 ## Project guides
 
@@ -60,6 +63,7 @@ The foundation and learner demo store only validated demo records in this browse
 - [Shared runner, explanation formats, and AI fallback behaviour](doc/runner.md)
 - [Diagnostic results, scoring scope, content limits, and validation](doc/results.md)
 - [Concept lessons, library, and saved learning actions](doc/learning.md)
+- [Practice pools, saved sessions, results, and comparison limits](doc/practice.md)
 - [Implementation progress and measurement limits](doc/progress.md)
 
 Neon, Drizzle, and Better Auth will be integrated when real accounts are built. AI explanations will use server-side credentials and reviewed fallback content; no live prompts are implemented in this stage.

@@ -1,6 +1,7 @@
 import type { Concept, Question, TopicId } from "./models";
 import { diagnosticQuestions } from "./diagnostic-content";
 import { lessonConcepts } from "./lesson-content";
+import { practiceQuestions } from "./practice-content";
 
 export const topics: ReadonlyArray<{
   id: TopicId;
@@ -25,6 +26,9 @@ export const topics: ReadonlyArray<{
   },
 ];
 
-// Initial diagnostic bank; expand before claiming fresh targeted practice.
-export const questions: readonly Question[] = diagnosticQuestions;
+// Diagnostic IDs and ordering stay stable; the added bank supplies practice alternatives.
+export const questions: readonly Question[] = [
+  ...diagnosticQuestions,
+  ...practiceQuestions,
+];
 export const concepts: readonly Concept[] = lessonConcepts;

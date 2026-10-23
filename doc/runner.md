@@ -1,6 +1,6 @@
 # Assessment runner
 
-Stage 7 completes the runner at `/assessment/[sessionId]`. Diagnostic setup creates sessions; the runner can now also consume valid persisted practice sessions. Practice creation and its dedicated routes remain stage 10.
+Stage 7 completes the runner at `/assessment/[sessionId]`. Diagnostic setup creates sessions; the runner can now also consume valid persisted practice sessions. Practice creation and dedicated routes are implemented in stage 10; see `doc/practice.md`.
 
 ## Answer and explanation flow
 
@@ -20,10 +20,10 @@ AI is not connected in this demo. AI help displays an honest unconfigured notice
 
 ## Scope and verification
 
-The domain and presentation parts are shared across diagnostic and practice sessions, including saved-session dashboard links. This does not make practice setup, fresh-question selection, practice result routes, or the larger question bank complete.
+The domain and presentation parts are shared across diagnostic and practice sessions, including saved-session dashboard links. Practice setup, fresh-first selection, dedicated practice result routes, and the 30-question bank are now implemented; see `doc/practice.md`.
 
 Seven additional tests cover format support/fallbacks, preference mapping, AI-unconfigured/offline messages, hidden feedback before completion, invalid review IDs, mandatory/optional confidence, unrated revision semantics, immutable response history, completion, and first-practice/retry classification. Together with diagnostic and existing tests, all 49 project tests pass. Lint, TypeScript checking, and the production build verify the implementation.
 
 Browser visual and interaction checks remain unavailable because of the earlier browser access-policy block. Before release, review format-button keyboard access, announcement/focus behaviour, offline messages, after-session feedback, refresh/resume, and small-screen layouts. No browser check is claimed by the domain or route tests.
 
-Stage 8 detailed diagnostic results are implemented; see `doc/results.md`. Finish diagnostic opens that report. Practice keeps its completion summary until practice results are built. Concept lessons and the learning library are now implemented. Next: targeted practice. Lessons and targeted-practice destinations must only become active when implemented.
+Stage 8 detailed diagnostic results are implemented; see `doc/results.md`. Finish diagnostic opens that report. Finish practice opens its dedicated results. Concept lessons and the learning library are now implemented. Next: progress and dashboard completion. Lessons and targeted-practice destinations must only become active when implemented.
