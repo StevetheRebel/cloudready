@@ -45,8 +45,9 @@ export default function Page() {
           <p>
             The separate demo learner profile is stored in this browser.
             Clearing browser data or resetting the demo can remove its progress.
-            Features shown as unavailable, including the full diagnostic and
-            real account access, cannot be used in this version.
+            The diagnostic saves submitted answers and confidence ratings
+            locally. Real account access and features labelled unavailable
+            cannot be used in this version.
           </p>
         </section>
         <section>

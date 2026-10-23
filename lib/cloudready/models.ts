@@ -53,6 +53,7 @@ export const questionSchema = z
     options: z.array(optionSchema).length(4),
     correctOptionId: z.string().min(1),
     explanation: z.string().min(1),
+    simplerExplanation: z.string().min(1).optional(),
     localScenario: z.string().optional(),
     source: z.object({
       title: z.string().min(1),
@@ -83,7 +84,7 @@ export const sessionSchema = z
   .object({
     id: z.string().min(1),
     kind: z.enum(["diagnostic", "practice"]),
-    status: z.enum(["in-progress", "completed"]),
+    status: z.enum(["in-progress", "completed", "abandoned"]),
     mode: z.enum(["mixed", "topic", "weak-areas"]),
     explanationTiming: z.enum(["after-answer", "after-session"]),
     confidenceEnabled: z.boolean(),

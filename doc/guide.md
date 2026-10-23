@@ -32,7 +32,7 @@ Preferences → Diagnostic → Learning gaps → Concept review → Fresh practi
 - [x] Add diagnostic, account, and demo entry actions.
 - [x] Label product-preview figures as sample data.
 
-Current entry behaviour: demo actions open `/onboarding` for incomplete profiles or saved drafts, and `/dashboard` for completed profiles, account actions open the demo sign-up/sign-in routes, and diagnostic actions explain that the full diagnostic is not yet available. The home page also retains its interactive on-page sample.
+Current entry behaviour: demo actions open `/onboarding` for incomplete profiles or saved drafts, and `/dashboard` for completed profiles, account actions open the demo sign-up/sign-in routes, and diagnostic actions open `/assessment/start`. The home page also retains its interactive on-page sample.
 
 ### 3. Account entry — `/sign-up`, `/sign-in`
 
@@ -50,33 +50,38 @@ Stage 3 demo scope is complete. No real accounts, authentication sessions, or em
 - [x] Validate dates and persist preferences, with resumable local drafts.
 - [x] Provide completion states that save preferences and explain the pending destinations.
 - [x] Connect completion to the dashboard route.
-- [ ] Connect diagnostic completion to assessment setup when stage 6 exists.
+- [x] Connect diagnostic completion to assessment setup.
 
-Onboarding is implemented for the local demo. New demo entry goes through setup, existing drafts resume, and completed learners can edit preferences. Go to dashboard saves preferences and opens `/dashboard`. The diagnostic action saves preferences and explains that assessment setup is pending, with a dashboard link. A draft-cleanup failure is reported before navigation. See `doc/onboarding.md`.
+Onboarding is implemented for the local demo. New demo entry goes through setup, existing drafts resume, and completed learners can edit preferences. Go to dashboard saves preferences and opens `/dashboard`. The diagnostic action saves preferences and opens `/assessment/start`. A draft-cleanup failure is reported before navigation. See `doc/onboarding.md`.
 
 ### 5. Initial dashboard — `/dashboard`
 
 - [x] Show the new learner's empty state and diagnostic availability action.
 - [x] Display unfinished-session details without replacing saved answers.
-- [ ] Connect unfinished-session continuation after the assessment runner exists.
+- [x] Connect unfinished diagnostic continuation to the initial runner.
+- [x] Connect saved practice-session continuation to the shared runner (practice creation remains pending).
 - [x] Use actual learner records rather than fabricated progress.
 
-The initial dashboard UI is implemented. Topic metrics, revision priorities, weekly activity, and countdowns derive from saved records. Full diagnostic, practice, and revision actions remain pending. See `doc/dashboard.md`.
+The initial dashboard UI is implemented. Topic metrics, revision priorities, weekly activity, and countdowns derive from saved records. Diagnostic start/resume is connected. Practice and full revision actions remain pending. See `doc/dashboard.md`.
 
 ### 6. Diagnostic setup — `/assessment/start`
 
-- [ ] Explain the 12-question, untimed diagnostic and confidence ratings.
-- [ ] Implement start, resume, and confirmed replacement of an unfinished session.
+- [x] Explain the 12-question, untimed diagnostic and confidence ratings.
+- [x] Implement start, resume, and confirmed replacement of an unfinished diagnostic.
+
+Stage 6 includes an initial diagnostic runner so start/resume leads to a working session. The first 12 original questions are source-checked. Replaced sessions retain submitted history. See `doc/assessment.md`.
 
 ### 7. Assessment runner — `/assessment/[sessionId]`
 
-- [ ] Show one question at a time with answer and confidence selection.
-- [ ] Require both selections before diagnostic submission.
-- [ ] Lock submitted answers and preserve the first response.
-- [ ] Explain the correct answer and every alternative using reviewed content.
-- [ ] Add simpler explanations, local examples, and AI fallback states.
-- [ ] Save progress, support refresh/resume, and handle unknown sessions.
-- [ ] Design the runner for reuse by practice sessions.
+- [x] Show one question at a time with answer and confidence selection.
+- [x] Require both selections before diagnostic submission.
+- [x] Lock submitted answers and preserve the first response.
+- [x] Explain the correct answer and every alternative using reviewed content.
+- [x] Add simpler explanations, fictional local examples, and honest AI-unconfigured/offline fallback states.
+- [x] Save progress, support refresh/resume, and handle unknown sessions.
+- [x] Design the runner for reuse by practice sessions, including confidence-off and after-session explanations.
+
+Stage 7 is implemented without live AI. The shared runner supports persisted diagnostic and practice sessions; practice creation remains stage 10. See `doc/runner.md`.
 
 ### 8. Diagnostic results — `/assessment/[sessionId]/results`
 

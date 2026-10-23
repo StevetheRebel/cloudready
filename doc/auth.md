@@ -44,4 +44,4 @@ Browser access was rejected by the browser security policy during this stage. Vi
 
 Replace the mock adapter with Better Auth, Neon Postgres, and Drizzle migrations. Add server-side session checks, verification delivery, recovery, Remember me behaviour, and current production policy content. Do not treat the demo success result or local profile as authentication. No credentials are needed for the current demo build.
 
-Onboarding is now implemented at `/onboarding`; see `doc/onboarding.md`. Demo entry goes there for incomplete profiles or saved setup drafts, and to `/dashboard` for completed profiles without drafts. Real accounts remain separate and unimplemented. The initial dashboard is implemented; diagnostic setup is next.
+Onboarding is now implemented at `/onboarding`; see `doc/onboarding.md`. Demo entry goes there for incomplete profiles or saved setup drafts, and to `/dashboard` for completed profiles without drafts. Real accounts remain separate and unimplemented. The initial dashboard is implemented; diagnostic setup and the initial runner are available; see `doc/assessment.md`.

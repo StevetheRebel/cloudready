@@ -101,8 +101,8 @@ export default function Page() {
             12 questions. Confidence tracking. A focused starting point.
           </p>
           <p className="mt-6 max-w-md border-l-2 border-primary/25 pl-3 text-xs leading-6 text-muted-foreground">
-            Demo account forms are available now. The full diagnostic and real
-            account access are coming soon.
+            Try the diagnostic with locally saved demo progress. Account forms
+            are a preview; real account access is coming soon.
           </p>
         </div>
         <ProductPreview />

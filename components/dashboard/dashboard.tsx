@@ -21,7 +21,7 @@ import { Card } from "@/components/ui/card";
 import { ErrorState, LoadingState } from "@/components/ui/states";
 import { TopicSummaryCard } from "@/components/dashboard/topic-summary-card";
 import { SessionAction } from "@/components/dashboard/session-action";
-import { useDashboardData } from "@/components/dashboard/use-dashboard-data";
+import { useLearnerData } from "@/components/learner/use-learner-data";
 import {
   dashboardSummary,
   initialStudyPlan,
@@ -54,7 +54,7 @@ function Stat({
 }
 
 export function Dashboard() {
-  const { state, refresh } = useDashboardData();
+  const { state, refresh } = useLearnerData();
   const name =
     state.status === "ready" ? state.data.profile.displayName : "Demo learner";
   if (state.status !== "ready")
@@ -154,9 +154,9 @@ export function Dashboard() {
             {needsSetup
               ? "Set your study preferences so your time, explanation style, and starting topics are ready for the next session."
               : summary.unfinished
-                ? "An unfinished session is saved in this browser. Review its saved state before your next assessment."
+                ? "An unfinished session is saved in this browser. Your submitted answers are kept when you resume."
                 : !summary.hasDiagnostic
-                  ? "The planned 12-question diagnostic will help identify learning gaps across the three topic groups. It is not available yet; the sample is ready to explore."
+                  ? "Explore twelve untimed questions across the three topic groups. Choose an answer and a confidence rating, then learn from the explanation."
                   : "Your latest answers and confidence ratings help prioritise revision. Full lessons, practice, and revision actions are coming soon."}
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
@@ -292,8 +292,8 @@ export function Dashboard() {
             <SessionAction session={summary.unfinished} />
           </div>
           <p className="mt-4 text-xs leading-6 text-muted-foreground">
-            Session details are preserved. The assessment runner is coming soon;
-            resuming is not available in this version.
+            Submitted answers are saved. Creating new practice sessions will be
+            available in a later stage.
           </p>
         </Card>
       ) : null}

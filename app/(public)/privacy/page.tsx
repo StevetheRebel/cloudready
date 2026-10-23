@@ -34,11 +34,14 @@ export default function Page() {
           <p>
             Opening the separate demo learner space creates or resumes a local
             demo profile. Demo preferences and any demo learning records are
-            saved under the CloudReady demo storage key. In-progress onboarding
-            values and the current setup step are saved as a separate local
-            draft. The theme preference is saved separately. The home-page and
-            demo-space sample questions keep answers only while their page is
-            open and do not update saved progress.
+            saved under the CloudReady demo storage key. The diagnostic stores
+            submitted answers, confidence ratings, timestamps, revision items,
+            and completion activity there. Unsubmitted answer selections are not
+            saved. In-progress onboarding values and the current setup step are
+            saved as a separate local draft. The theme preference is saved
+            separately. The home-page and demo-space sample questions keep
+            answers only while their page is open and do not update saved
+            progress.
           </p>
         </section>
         <section>

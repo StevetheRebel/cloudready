@@ -6,11 +6,11 @@
 
 - Personal greeting, study routine, preference editing, and an optional exam-date countdown.
 - Setup or diagnostic prompt, three topic cards, revision priorities, a short sample/resource study plan, weekly activity, and recent recorded events.
-- An unfinished-session card showing saved answers. View saved session explains that the runner is pending. No session is discarded or replaced.
+- An unfinished-session card showing saved answers. Resume diagnostic and Resume practice open the shared runner for saved sessions. Practice setup is still pending. No session is discarded or replaced by opening the dashboard.
 - Loading, storage-error/retry, unreadable-draft, and empty states. Existing data is retained when reading fails.
 - Desktop/sidebar and mobile/bottom navigation, themes, labelled controls, and keyboard-accessible dialogs using the shared components.
 
-Full diagnostic, practice, lessons, revision, progress, and settings actions remain pending. The dashboard exposes only available destinations or clearly explains availability.
+Diagnostic setup and the initial runner are available. Practice, lessons, full revision, progress, and settings remain pending. The dashboard exposes only available destinations or clearly explains availability.
 
 ## Metric definitions
 
@@ -37,4 +37,4 @@ Browser interaction and visual verification remain unavailable following the ear
 
 ## Next integration
 
-Build diagnostic setup, then the shared assessment runner. Replace the availability notices with real start/resume actions only when those routes can preserve and submit sessions. Keep the guide's unfinished-session continuation task open until then.
+Diagnostic start/resume is connected; see `doc/assessment.md`. Saved practice sessions also use the shared runner; new practice setup remains pending. Next, build detailed results.

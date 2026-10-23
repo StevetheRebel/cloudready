@@ -18,7 +18,7 @@ type State =
       hasDraft: boolean;
       draftError: boolean;
     };
-export function useDashboardData() {
+export function useLearnerData() {
   const [state, setState] = useState<State>({ status: "loading" });
   const request = useRef(0);
   const load = useCallback(async () => {
@@ -72,6 +72,11 @@ export function useDashboardData() {
   }, [load]);
   return {
     state,
+    replaceData: (data: LearnerData) => {
+      setState((current) =>
+        current.status === "ready" ? { ...current, data } : current,
+      );
+    },
     refresh: () => {
       setState({ status: "loading" });
       void load();

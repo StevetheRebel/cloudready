@@ -1,4 +1,5 @@
 import type { Concept, Question, TopicId } from "./models";
+import { diagnosticQuestions } from "./diagnostic-content";
 
 export const topics: ReadonlyArray<{
   id: TopicId;
@@ -23,7 +24,6 @@ export const topics: ReadonlyArray<{
   },
 ];
 
-// Populate from the sample only after checking sources and answer keys.
-// Empty content is intentional during the foundation stage.
-export const questions: readonly Question[] = [];
+// Initial diagnostic bank; expand before claiming fresh targeted practice.
+export const questions: readonly Question[] = diagnosticQuestions;
 export const concepts: readonly Concept[] = [];

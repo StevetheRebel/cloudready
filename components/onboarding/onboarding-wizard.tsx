@@ -194,8 +194,10 @@ export function OnboardingWizard() {
       }
       setValues(valuesFromProfile(result.data.profile));
       setDraftWarning(!result.draftCleared);
-      if (destination === "dashboard" && result.draftCleared) {
-        router.push("/dashboard");
+      if (result.draftCleared) {
+        router.push(
+          destination === "dashboard" ? "/dashboard" : "/assessment/start",
+        );
         return;
       }
       setFinished(destination);
@@ -269,7 +271,7 @@ export function OnboardingWizard() {
               </h2>
               <p className="mt-3 text-sm leading-7 text-muted-foreground">
                 {finished === "diagnostic"
-                  ? "The full diagnostic is coming soon. Your preferences are saved, and your dashboard is ready to explore."
+                  ? "Your preferences are saved. Open diagnostic setup when you are ready to begin."
                   : "Your preferences are saved. Open your dashboard to see your study routine and available next steps."}
               </p>
             </Card>
@@ -280,8 +282,15 @@ export function OnboardingWizard() {
               </p>
             ) : null}
             <div className="mt-7 flex flex-wrap gap-3">
-              <Link href="/dashboard" className={buttonVariants()}>
-                Open dashboard
+              <Link
+                href={
+                  finished === "diagnostic" ? "/assessment/start" : "/dashboard"
+                }
+                className={buttonVariants()}
+              >
+                {finished === "diagnostic"
+                  ? "Open diagnostic setup"
+                  : "Open dashboard"}
                 <ArrowRight aria-hidden="true" size={16} />
               </Link>
               <Button
@@ -726,9 +735,10 @@ export function OnboardingWizard() {
                         ) : null}
                       </fieldset>
                       <div className="rounded-xl bg-muted p-4 text-sm leading-7 text-muted-foreground">
-                        Your dashboard is ready. The full diagnostic is coming
-                        soon. Both actions below save your preferences. Go to
-                        dashboard opens your study overview.
+                        Both actions save your preferences. Take the diagnostic
+                        opens setup, where you can start or resume an untimed
+                        12-question session. Go to dashboard opens your study
+                        overview.
                       </div>
                     </>
                   ) : null}
