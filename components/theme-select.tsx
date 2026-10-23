@@ -1,31 +1,32 @@
 "use client";
 import { useSyncExternalStore } from "react";
 import { useTheme } from "next-themes";
-import { Select } from "@/components/ui/field";
+import { Moon, Sun } from "lucide-react";
+import { Button } from "@/components/ui/button";
 const subscribe = () => () => {};
 export function ThemeSelect() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const mounted = useSyncExternalStore(
     subscribe,
     () => true,
     () => false,
   );
+  const isDark = mounted && resolvedTheme === "dark";
+  const label = isDark ? "Switch to light theme" : "Switch to dark theme";
   return (
-    <div className="flex items-center gap-2">
-      <label htmlFor="theme-choice" className="text-sm text-muted-foreground">
-        Theme
-      </label>
-      <Select
-        id="theme-choice"
-        className="w-28 text-sm"
-        value={mounted ? theme : "light"}
-        disabled={!mounted}
-        onChange={(event) => setTheme(event.target.value)}
-      >
-        <option value="light">Light</option>
-        <option value="dark">Dark</option>
-        <option value="system">System</option>
-      </Select>
-    </div>
+    <Button
+      variant="ghost"
+      className="size-11 shrink-0 p-0"
+      aria-label={label}
+      title={label}
+      disabled={!mounted}
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+    >
+      {isDark ? (
+        <Sun aria-hidden="true" size={20} />
+      ) : (
+        <Moon aria-hidden="true" size={20} />
+      )}
+    </Button>
   );
 }
